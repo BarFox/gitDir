@@ -1,0 +1,1 @@
+gitDir is for git
