@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>CS571 Assignment 1</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script type="text/javascript" src="jsfile.js"></script>
+    </head>
+    
+    <script language="JavaScript">
+     var titletxt="The world’s largest online dating site!";
+     var pos=0;
+     function movetitle()
+     {
+         document.form1.titlefield.value=titletxt.substring(0,pos);
+         if(pos++!=titletxt.length)
+         {
+             setTimeout("movetitle()",150);
+         }
+     }
+    </script>
+
+    
+    <body class="font-common" onload="movetitle()">
+        
+        <div style="width:1150px;height:100px; background-color: white;position:relative;left:50px;top:10px;">
+            <div style="display:inline;float: left;width:200px;height:100px;position:relative;left:50px">
+                <img src="pic/bunnyfox.png">
+            </div>
+            <div style="font-size:25px;position:relative;top:20px;left:100px;display:inline;float: left;width:390px;color:  #ed3f70;">
+                <!--
+                <p>The world's Largest online dating site!</p>
+                 -->
+                <form name="form1">
+                    <input type="text" class="font-commmon" name="titlefield" size="53"  style="border:0px; height:51px;  font-size:25px;color:  #ed3f70;" >
+                    
+                </form>
+                
+            </div>
+            <div style="position:relative;top:20px;display:inline;float: right;width:350px;">
+                <img src="pic/title1.png">
+            </div>
+            
+            </div>
+        
+        <div  style="width: 1150px; height: 4px;position:relative;left:50px; top:10px;background-color: black;"></div>
+        
+          <div style="width:1150px;height:1000px; background-color: white;position:relative;left:50px;top:30px; ">
+            <div class="picbox " style="background:url(pic/pic1.jpg); ">
+               <div class="opacybox opacy"></div>
+            </div>
+            <br>
+            <div class="picbox opacy" style="background:url(pic/pic2.jpg); ">
+                <div class="opacybox opacy"></div>
+            </div>
+        
+        
+        
+        
+        </div>
+      
+   <!--   <form > -->
+        <!--1 div-->
+      <div class="positionbox sizebox testcolor" id="box1" style="display:block;<!--background:url(pic/bg1.jpg);-->">
+          
+          <div class="messbox" id="mess3" style="top:260px;left:370px;height:82px;">
+              <div style="position:relative; left:8px;top:5px">
+                  <div  class="inmessbox"><strong>TIPS</strong></div>
+                  <div style="width:200px;height:2px;background-color:black;"></div>
+              </div>
+          
+              <div style="padding:8px;">
+                  Please use a working corporate email account as the following format:name@example.com.
+              </div>
+          </div>
+          
+          <div class="titlebox">
+              
+              <p style="position:relative;left:30px;top:0px">
+              <span style="font-size:40px;" id="testbox">Page 1: Sign up</span>
+              <span style="font-size:25px; position:relative;left:40px"> Find your love online!</span>
+              
+              <button class="pink"
+                  style="width: 75px; height: 30px;border-radius:3px;display:inline;position:relative;left:340px;bottom:0px;line-height:22px;" id="from1to3" onclick="from1to3()">Page 3
+              
+                 <!--
+                  <button class="blue"
+                      style="width: 50px; height: 20px;border-radius:3px;display:inline;position:relative;left:270px;bottom:20px;" id="from1to2" onclick="from1to2()">GOto2
+                  -->
+              </p>
+          </div>
+          
+          
+          <!--<form  id="signUpForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" onsubmit="return validate_form(this)">-->
+          
+            <div class="leftbox opacy" style="">
+                            <div class="smalltitle">Private information</div>
+                
+                                  <p  style="position:relative;left:68px;top:0px">
+                                  First Name*&nbsp;&nbsp;
+                                  <input class="input-text-user noPic "
+                                  type="text" name="first_name" id="first_name" value="" onblur='onblurfirstname()' onfocus='document.getElementById("mess1").style.display="block"'/>
+                                  <span style="font-size:12px; color:red;visibility:hidden"  id="firstnamevalid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                      <img src="pic/alert.png">
+                                          </span>
+                                  </p>
+                                  
+                                  <p  style="position:relative;left:70px;top:0px">
+                                        Last Name*&nbsp;&nbsp;
+                                        <input class="input-text-user noPic"
+                                            type="text" name="last_name" id="last_name" value="" onblur='onblurlastname()' onfocus='document.getElementById("mess2").style.display="block"'/>
+                                        <span style="font-size:12px; color:red;visibility:hidden" id="lastnamevalid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <img src="pic/alert.png">
+                                        </span>
+                                  </p>
+                                  
+                                  <!--
+                                  <p class="inputbox" style="position:relative;left:40px;top:0px">
+                                  Phone Number&nbsp;&nbsp;
+                                  <input class="input-text-user noPic"
+                                  type="text" name="phone" id="phone_number" value="" onblur="onblurphone()"  onfocus='document.getElementById("mess3").style.display="block"'/>
+                                  <span style="font-size:12px; color:red;visibility:hidden" id="phonevalid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                      <img src="/pic/alert.png">
+                                          </span>
+                                  </p>
+                                  -->
+                                   
+                                  <p  style="position:relative;left:98px;top:0px">
+                                  E-mail*&nbsp;&nbsp;
+                                    <input class="input-text-user noPic"
+                                        type="text" name="email" id="email" value="" onblur='document.getElementById("mess3").style.display="none"' onfocus='document.getElementById("mess3").style.display="block"'/>
+                                    <span style="font-size:12px; color:red;visibility:hidden" id="emailvalid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                      <img src="pic/alert.png">
+                                    </span>
+                                  </p>
+                                  
+                                  <p  style="position: relative;left: 113px;top: 0px;">Sex*&nbsp;&nbsp;
+                                    <input type="radio" name="isex" value="male" id="isex"  />male
+                                    <input type="radio" name="isex" value="female" id="isex" />female
+                                    <input type="radio" name="isex" value="other" id="isex" />other
+                                    <span style="font-size:12px; color:red;visibility:hidden;position:relative;top:5px" id="isexvalid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <img src="pic/alert.png">
+                                    </span>
+
+                                  </p>
+                                  
+                                 
+                                  <p style="display:inline;position: relative;left: 100px;top: 0px;">Racial*&nbsp;&nbsp;&nbsp;
+                                      <select id="racial" class="selectbox" style="display:inline;">
+                                           <option value="undefined">Select one</option>
+                                          <option value="chinese">Chinese</option>
+                                          <option value="american">American</option>
+                                          <option value="japanese">Japanese</option>
+                                          <option value="korean">Korean</option>
+                                          <option value="indian">Indian</option>
+                                      </select>
+                                      <span style="font-size:12px; color:red;visibility:hidden;position:relative;top:5px" id="racialvalid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                          <img src="pic/alert.png">
+                                      </span>
+                                  </p>
+                                  
+                                  <p  style="position:relative;left:76px;top:0px">
+                                    Password&nbsp;&nbsp;
+                                    <input class="input-text-user noPic"
+                                        type="password" name="password" id="pass" value="" onblur='onblurpass()' onfocus='document.getElementById("mess5").style.display="block"'/>
+                                    <span style="font-size:12px; color:red; visibility:hidden" id="passwordvalid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                      <img src="pic/alert.png">
+                                    </span>
+                                  </p>
+                                  
+                                  <p  style="position:relative;left:20px;top:0px">
+                                  Confirm Password&nbsp;&nbsp;
+                                  <input class="input-text-user noPic" type="password"
+                                  name="password_confirm" id="confirm_pass" value="" onblur="onblurpasscon()" onfocus='document.getElementById("mess6").style.display="block"'/>
+                                  <span style="font-size:12px; color:red; visibility:hidden" id="passwordconfirmvalid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                      <img src="pic/alert.png">
+                                  </span>
+                                  </p>
+
+
+                                  
+
+            </div>
+   
+            <div class="rightbox opacy" style="">
+                 <div class="smalltitle">Your are looking for</div>
+                 
+
+
+
+                <p style="position: relative;left: 80px;top: 0px;">Age*&nbsp;&nbsp;
+                    <input  type="checkbox" name="tage" value="18-25"[checked]>18-25
+                    <input  type="checkbox" name="tage" value="26-30"[checked]>26-30
+                    <input  type="checkbox" name="tage" value="31-35"[checked]>31-35
+                    <input  type="checkbox" name="tage" value="above 36"[checked]>above 36
+                    <span style="font-size:12px; color:red;visibility:hidden;position:relative;top:5px" id="tagevalid">&nbsp;&nbsp;&nbsp;
+                            <img src="pic/alert.png">
+                    </span>
+
+                </p>
+                
+                <p style="position: relative;left: 80px;top: 0px;">Income/month&nbsp;&nbsp;
+                    <br>
+                    <input  type="checkbox" name="tincome" value="$2000-4000"[checked]>$2000-4000
+                    <br>
+                    <input  type="checkbox" name="tincome" value="$4000-6000"[checked]>$4000-6000
+                    <br>
+                    <input  type="checkbox" name="tincome" value="$6000-8000"[checked]>$6000-8000
+                    <br>
+                    <input  type="checkbox" name="tincome" value="$8000-10000"[checked]>$8000-10000
+                    <br>
+                    <input  type="checkbox" name="tincome" value="above $10000"[checked]>above $10000
+                </p>
+                
+                
+                <div >
+                <p  style="position: relative;left: 80px;top: 0px; display:inline" onchange="showchar()">Sex&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="tsex" value="male"  />male
+                <input type="radio" name="tsex" value="female" />female
+                </p>
+ 
+                <select id="tcharacter" class="selectbox" style="position: relative;left: 130px;top: 0px; display:inline">
+                    <option value="undefined">Select one</option>
+                    <!--
+                    <option value="soft">Soft</option>
+                    <option value="weird">Weird</option>
+                    <option value="lovely">Lovely</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                     -->
+                </select>
+                </div>
+
+                <p style="position: relative;left: 80px;top: 0px;">*: Those parts should not be empty.</p>
+
+                <p style="position:absolute;right:40px;top:310px">
+                
+                <input type="checkbox" name="terms" id="Terms"
+                    value="1" checked="checked" /> <font size="2px"> I agree to
+                        Bunny&Fox! <a href="#" target="_blank">Terms
+                            and Conditions.</a>
+                </font> &nbsp;&nbsp;&nbsp;
+                <input type="button" class=" pink"
+                    style="width: 75px; height: 30px;border-radius:3px" value="Next" id="next" onclick="check1()"/>
+                </p>
+                
+            </div>
+            
+            
+            
+          
+        </div>
+      
+        <!--2 div-->
+        <div class="positionbox sizebox testcolor" style="display:none;<!-- background:url(pic/bg2.jpg);-->" id="box2">
+            
+            <div class="messbox" id="mess21" style="top:223px;left:370px;height:122px;">
+                <div style="position:relative; left:8px;top:5px">
+                    <div  class="inmessbox"><strong>TIPS</strong></div>
+                    <div style="width:200px;height:2px;background-color:black;"></div>
+                </div>
+                
+                <div style="padding:8px;">
+                    "Type" has been set to "date". With Google and Firefox browser, Customer could input a date without risk of mistake. While with Safori, it doesn't work.
+                </div>
+            </div>
+            
+            <div class="messbox" id="mess22" style="top:267px;left:370px;height:102px;">
+                <div style="position:relative; left:8px;top:5px">
+                    <div  class="inmessbox"><strong>TIPS</strong></div>
+                    <div style="width:200px;height:2px;background-color:black;"></div>
+                </div>
+                
+                <div style="padding:8px;">
+                    AS for normal human beings, Height should be a number between 0-100 inch. Of course, decimal number is allowed.
+                </div>
+            </div>
+           
+           <div class="messbox" id="mess23" style="top:312px;left:370px;height:102px;">
+               <div style="position:relative; left:8px;top:5px">
+                   <div  class="inmessbox"><strong>TIPS</strong></div>
+                   <div style="width:200px;height:2px;background-color:black;"></div>
+               </div>
+               
+               <div style="padding:8px;">
+                   It is hard to give monthly income a high limit, so the limit is income should be a number larger than 0. Decimal number is allowed.
+               </div>
+           </div>
+           
+           
+            <div class="titlebox">
+                <p style="position:relative;left:30px;top:0px">
+                <span style="font-size:40px">Page 2: Sign up</span>
+                    <span style="font-size:25px; position:relative;left:40px"> Create an account, It's FREE!</span>
+                
+                
+                    <button class="pink"
+                        style="width: 75px; height: 30px;border-radius:3px;display:inline;position:relative;left:150px;bottom:0px;line-height:22px;" id="from2to1" onclick="from2to1()">Page 1
+                    <button class="pink"
+                        style="width: 75px; height: 30px;border-radius:3px;display:inline;position:relative;left:195px;bottom:0px;line-height:22px;" id="from2to3" onclick="from2to3()">Page 3
+
+
+                </p>
+            </div>
+            
+            <div class="leftbox opacy" style="">
+                <div class="smalltitle">Private information</div>
+            
+                <p style="display:inline;position: relative;left: 85px;top: 30px;">Location*&nbsp;&nbsp;&nbsp;
+                    <select id="location1" class="selectbox" style="display:inline;" onchange="showcity()">
+                        <option value="undefined">Select one</option>
+                        <option value="America">America</option>
+                        <option value="China">China</option>
+                        <option value="Korea">Korea</option>
+                        <option value="Japan">Japan</option>
+                    </select>
+                    
+                    <select id="location2" class="selectbox" style="display:inline;">
+                        <option value="undefined">Select one</option>
+                       <!--
+                       <option value="2">America</option>
+                        <option value="3">Japan</option>
+                        <option value="4">Korea</option>
+                        <option value="5">India</option>
+                        -->
+                    </select>
+                    
+                    <span style="font-size:12px; color:red;visibility:hidden;position:absolute;top:-13px;left:300px" id="locationvalid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="pic/alert.png">
+                    </span>
+                    
+
+                </p>
+
+                <p  style="position:relative;left:88px;top:30px">
+                    Birthday*&nbsp;&nbsp;
+                    <input class="input-text-user noPic "
+                        type="date" name="birth" id="birth" value="" onblur='document.getElementById("mess21").style.display="none"' onfocus='document.getElementById("mess21").style.display="block"'/>
+                    <span style="font-size:12px; color:red;visibility:hidden"  id="birthvalid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="pic/alert.png">
+                    </span>
+                </p>
+
+
+
+
+                <p  style="position:relative;left:67px;top:30px">
+                    Height/inch*&nbsp;&nbsp;
+                    <input class="input-text-user noPic "
+                        type="text" name="iheight" id="iheight" value="" onblur='document.getElementById("mess22").style.display="none"' onfocus='document.getElementById("mess22").style.display="block"'/>
+                    <span style="font-size:12px; color:red;visibility:hidden"  id="iheightvalid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <img src="pic/alert.png">
+                    </span>
+                </p>
+
+                <p  style="position:relative;left:44px;top:30px">
+                    Income/month*&nbsp;&nbsp;
+                    <input class="input-text-user noPic "
+                        type="text" name="iincome" id="iincome" value="" onblur='document.getElementById("mess23").style.display="none"' onfocus='document.getElementById("mess23").style.display="block"'/>
+                    <span style="font-size:12px; color:red;visibility:hidden"  id="iincomevalid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="pic/alert.png">
+                    </span>
+                </p>
+
+                <p  style="position: relative;left: 52px;top: 30px;">Marital Status*&nbsp;&nbsp;
+                    <input type="radio" name="imarriage" value="single"  />single
+                    <input type="radio" name="imarriage" value="divorced" />divorced
+                    <input type="radio" name="imarriage" value="widowed" />widowed
+                    <span style="font-size:12px; color:red;visibility:hidden;position:relative;top:5px"  id="imarriagevalid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="pic/alert.png">
+                    </span>
+                </p>
+
+                <p  style="position: relative;left: 115px;top: 30px;">Kids&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="kids" value="none"  />none&nbsp;
+                    <input type="radio" name="kids" value="1" />1&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="kids" value="2" />2&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="kids" value="above 2" />above 2
+                </p>
+
+
+
+            </div>
+            
+            <div class="rightbox opacy">
+                
+                
+                <p  style="position:relative;left:45px;top:0px">
+                Self Description&nbsp;&nbsp;
+                <br>
+                <textarea rows="3" cols="20" style="border:#D8D8D8 1px solid;padding:0 15px;border-radius:3px;width:300px;height:90px;position:relative;left:15px;top:0px"
+                    name="describe" id="describe"  >
+                </textarea>
+                </p>
+
+                <div class="smalltitle" style="top:0px">You are looking for</div>
+
+
+                    <p style="position: relative;left: 60px;bottom: 20px;">Height/inch&nbsp;&nbsp;
+                        <input  type="checkbox" name="theight" value="under 60"[checked]>under 60
+                        <input  type="checkbox" name="theight" value="60-67"[checked]>60-67
+                        <input  type="checkbox" name="theight" value="above 67"[checked]>above 67
+                    </p>
+                
+                
+                
+                    <p style="position: relative;left: 44px;bottom: 20px;">Marital Status*
+                        <input  type="checkbox" name="tmarriage" value="single"[checked]>single
+                        <input  type="checkbox" name="tmarriage" value="divorced"[checked]>divorced
+                        <input  type="checkbox" name="tmarriage" value="widowed"[checked]>widowed
+                        
+                        <span style="font-size:12px; color:red;visibility:hidden;position:relative;top:5px;position:absolute;top:1px;left:310px;" id="tmarriagevalid">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="pic/alert.png">
+                        </span>
+                        
+                    </p>
+
+
+                    <p style="position: relative;left: 37px;bottom: 20px;">Religious Belief&nbsp;&nbsp;
+                        <input  type="checkbox" name="belief" value="None"[checked]>None
+                        <input  type="checkbox" name="belief" value="Buddhism"[checked]>Buddhism
+                        <input  type="checkbox" name="belief" value="Christianity"[checked]>Christianity
+                            <br>
+                        <span style="position: relative;left: 109px;" >
+                        <input  type="checkbox" name="belief" value="Hinduism"[checked]>Hinduism
+                        <input  type="checkbox" name="belief" value="Other"[checked]>Other
+                        </span>
+                    </p>
+
+                    <p style="position: relative;left: 60px;bottom: 20px;display:inline">Ready to find your love? Let's begin!&nbsp;&nbsp;&nbsp;
+                        <input type="button" class="pink"
+                            style="width: 75px; height: 30px;border-radius:3px;display:inline" value="Submit" id="submit" name="submit" onclick="check2()"/>
+                    </p>
+            </div>
+
+
+
+
+        </div>
+      <!--  </form>-->
+        
+        
+        <!--3 div-->
+        <div class="positionbox sizebox testcolor" style="display:none; background:url(pic/div3bg.jpg);" id="box3">
+            <div class="titlebox">
+                <p style="position:relative;left:30px;top:0px">
+                <span style="font-size:40px">Page 3: Find your LOVE!</span>
+                <span style="font-size:25px; position:relative;left:40px"> Create an account, It's FREE!</span>
+                <button class="pink"  style="width: 75px; height: 30px;border-radius:3px;display:inline; position:relative;left:130px; bottom:0px; line-height:22px;  " id="from3to1" onclick="from3to1()">Page 1
+                
+                </p>
+            </div>
+            <div class="" style="width: 960px; height: 5px;position:relative;top:25px;left:30px; background-color: black;"></div>
+            <div class="opacy" style="position:absolute;top:150px;left:70px;width:550px;height:300px;display:inline;">
+                <div style="width:450px;font-size:25px" class="smalltitle" >Only 2 simple steps to find your Destiny!</div>
+                <p class="smalltitle" style="display:inline;position:relative;top:70px;">1. Find your "the one"</p>
+                <div>
+                <select id="searchbox" class="selectbox" style="display:inline;position:relative;left:300px;top:50px;font-size:16px;">
+                    <option value="undefined">Select one</option>
+                </select>
+                </div>
+                <div>
+                    <p class="smalltitle" style="display:inline; position:relative;top:87px;">2. Click Search!</p>
+                
+                <button class="pink" style="width: 85px; height: 30px;border-radius:3px;display:inline;position:relative;left:190px;top:90px;" id="from3to4" onclick="from3to4()">Search!
+                </div>
+
+            </div>
+           <!--
+           <div class="rightbox" style="">
+                
+            </div>
+            -->
+        </div>
+        
+        <!--4 div-->
+        <div class="positionbox sizebox testcolor" style="display:none;<!--background-color:#fbfaf6-->" id="box4">
+            
+            <div class="titlebox">
+                <p style="position:relative;left:30px;top:0px">
+                <span style="font-size:40px">Page 4: Find your LOVE!</span>
+                <span style="font-size:25px; position:relative;left:40px"></span>
+                <img style=" position:absolute;left:440px;top:-19px" src="pic/bg4.png">
+                <button class="pink"
+                    style="width: 75px; height: 30px;border-radius:3px;display:inline;position:relative;left:300px;bottom:0px;line-height:22px;" id="from4to1" onclick="from4to1()">Page 1
+                <button class="pink"
+                    style="width: 75px; height: 30px;border-radius:3px;display:inline;position:relative;left:347px;bottom:0px;line-height:22px;" id="from4to3" onclick="from4to3()">Page 3
+                </p>
+            </div>
+           
+
+            <div class="printbox1" style="width=300px;background-color:white">
+                <p style="font-size:22px;position:relative;left:10px">His/Her Personal Information</p>
+                
+                <p class="displayline" style="position:relative;left:20px">First name&nbsp;&nbsp;</p><p class="displayinf" id="showfirstname">!!&nbsp;</p>
+                <br>
+                <br>
+                <p class="displayline"  style="left:20px;">Lastname&nbsp;&nbsp;</p><p class="displayinf" id="showlastname">!!&nbsp;</p>
+                 <br>
+                  <br>
+                <p class="displayline"  style="left:20px;">Email Address&nbsp;&nbsp;</p><p class="displayinf" id="showemail">!!&nbsp;</p>
+                 <br>
+                  <br>
+                <p class="displayline"  style="left:20px;">Sex&nbsp;&nbsp;</p><p class="displayinf" id="showisex">!!&nbsp;</p>
+                 <br>
+                  <br>
+                <p class="displayline"  style="left:20px;">Password&nbsp;&nbsp;</p><p class="displayinf" id="showpass">!!&nbsp;</p>
+                 <br>
+                  <br>
+                <p  class="displayline"  style="left:20px;">Confirm Password&nbsp;&nbsp;</p><p class="displayinf" id="showconpass">!!&nbsp;</p>
+                 <br>
+                  <br>
+                <p class="displayline"  style="left:20px;">Racial&nbsp;&nbsp;</p><p class="displayinf" id="showracial">!!&nbsp;</p>
+                
+                
+            </div>
+            <div class="printbox2" style="background-color:white">
+                
+                
+                <p class="displayline"  style="left:20px;">Location1&nbsp;&nbsp;</p><p class="displayinf" id="showlocation1">!!&nbsp;</p>
+                
+                <p class="displayline"  style="left:30px;">Location2&nbsp;&nbsp;</p><p class="displayinf" id="showlocation2">!!&nbsp;</p>
+                <br>
+                <br>
+                
+                
+                <p class="displayline"  style="left:20px;">Birthday&nbsp;&nbsp;</p><p class="displayinf" id="showbirth">!!&nbsp;</p>
+                <br>
+                <br>
+                <p class="displayline"  style="left:20px;">Height/inch&nbsp;&nbsp;</p><p class="displayinf" id="showiheight">!!&nbsp;</p>
+                <br>
+                <br>
+                <p class="displayline"  style="left:20px;">Income/month&nbsp;&nbsp;</p><p class="displayinf" id="showiincome">!!&nbsp;</p>
+                <br>
+                <br>
+                <p class="displayline"  style="left:20px;">Marital Status&nbsp;&nbsp;</p><p class="displayinf" id="showimarriage">!!&nbsp;</p>
+                <br>
+                <br>
+                
+                <p class="displayline"  style="left:20px;">Kids&nbsp;&nbsp;</p><p class="displayinf" id="showkids">!!&nbsp;</p>
+                <br>
+                <br>
+
+                <p class="displayline"  style="left:20px;">Self Description&nbsp;&nbsp;</p><p class="displayinf" id="showself">!!&nbsp;</p>
+
+                
+                
+            </div>
+            
+            <div class="printbox3" style="background-color:white">
+                
+                <p style="font-size:22px;position:relative;left:10px">His/Her Preference</p>
+                
+                <p class="displayline"  style="left:20px;">Age&nbsp;&nbsp;</p><p class="displayinf" id="showtage">!!&nbsp;</p>
+                <br>
+                <br>
+                <p class="displayline"  style="left:20px;">Income/month&nbsp;&nbsp;</p><p class="displayinf" id="showtincome">!!&nbsp;</p>
+                <br>
+                <br>
+                <p class="displayline"  style="left:20px;">Sex&nbsp;&nbsp;</p><p class="displayinf" id="showtsex">!!&nbsp;</p>
+                <br>
+                <br>
+                <p class="displayline"  style="left:20px;">Character&nbsp;&nbsp;</p><p class="displayinf" id="showchar">!!&nbsp;</p>
+                <br>
+                <br>
+                <p class="displayline"  style="left:20px;">Height/inchl&nbsp;&nbsp;</p><p class="displayinf" id="showtheight">!!&nbsp;</p>
+                <br>
+                <br>
+                <p class="displayline"  style="left:20px;">Marital Status&nbsp;&nbsp;</p><p class="displayinf" id="showtmarriage">!!&nbsp;</p>
+                <br>
+                <br>
+                <p class="displayline"  style="left:20px;">Religious Belief&nbsp;&nbsp;</p><p class="displayinf" id="showbelief">!!&nbsp;</p>
+
+                
+                
+            </div>
+            
+        </div>
+       </div>
+    </body>
+</html>

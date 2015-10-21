@@ -1,0 +1,308 @@
+@CHARSET "UTF-8";
+
+*{
+    border-sizing:border-box;
+}
+
+.font-common{
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+}
+
+div {
+<!--  border: 1px solid black;
+    
+      needtodelete-->
+}
+
+a{
+    text-decoration:none;
+}
+
+.box1{
+    border: 1px solid black;
+    width:100%;
+    height:auto;
+    margin:5px 0 0 0;
+    
+    border-radius:3px;
+
+}
+.box2{
+    border: 1px solid black;
+    width:1190px;
+    
+    margin:30px auto 0 auto;
+    
+    padding:30px;
+    border-radius:3px;
+    
+
+}
+.box3{
+    border: 1px solid black;
+    width:1230px;
+    height:300px;
+    margin:5px auto 0 auto;
+    
+    padding:0px;
+    border-radius:3px;
+
+}
+
+.rightbutton{
+    cursor:pointer;
+    width:100%;
+    height:40px;
+    
+    background:#232f3d;
+    border:1px solid #232f3d;
+    border-radius:6px;
+    
+    color:#fff;
+    font-size:12px;
+    
+    text-shadow:0 1px 2px rgba(0,0,0,.1)
+}
+.rightbutton:hover{
+    cursor:pointer;
+    width:100%;
+    height:40px;
+    
+    background:#232f3d;
+    border:1px solid #ffffff;
+    border-radius:6px;
+    
+    color:#fff;
+    font-size:12px;
+    
+    text-shadow:0 1px 2px rgba(0,0,0,.1)
+}
+.searchbutton{
+    cursor:pointer;
+    width:100%;
+    height:40px;
+    
+    background:#fcbc70;
+    border:1px solid #fcbc70;
+    border-radius:6px;
+    
+    color:#fff;
+    font-size:12px;
+    
+    text-shadow:0 1px 2px rgba(0,0,0,.1)
+}
+
+.buybutton{
+    cursor:pointer;
+    width:250px;
+    height:50px;
+    
+    background:#a0ca4c;
+    border:1px solid #a0ca4c;
+    border-radius:3px;
+    
+    color:#000;
+    font-size:20px;
+    
+    text-shadow:0 1px 2px rgba(0,0,0,.1)
+}
+
+.cartbutton{
+    cursor:pointer;
+    width:250px;
+    height:30px;
+    
+    background:#fcbc70;
+    border:1px solid #fcbc70;
+    border-radius:3px;
+    
+    color:#000;
+    font-size:14px;
+    
+    text-shadow:0 1px 2px rgba(0,0,0,.1)
+}
+
+.textbox{
+    text-shadow:0 1px 2px rgba(0,0,0,.1);
+    position:relative;
+    
+   
+}
+
+.inputbox{
+    width:260px;
+    height:42px;
+    margin-top:25px;
+    padding:0px 15px;
+    border:1px solid #bdc7d7;
+    border-radius:6px;
+    
+    letter-spacing:2px;
+    font-size:16px;
+    background:transparent;
+}
+
+.submitbutton{
+    cursor:pointer;
+    width:120px;
+    height:35px;
+    
+    background:#a0ca4c;
+    border:1px solid #a0ca4c;
+    border-radius:3px;
+    
+    color:#000;
+    font-size:14px;
+    
+    text-shadow:0 1px 2px rgba(0,0,0,.1)
+}
+select{
+    width:80px;
+    height:22px;
+    
+    float:right;
+    border:1px solid rgba(200,200,200,.55);
+    border-radius:6px;
+    
+    letter-spacing:2px;
+    font-size:12px;
+    background:transparent;
+}
+@media only screen and (max-width: 1250px){
+    .rightbutton {
+        margin:30px 0 0 0 ;
+    }
+    .box1{
+        height:120px
+    }
+}
+.inputitle{
+    width:450px
+}
+#phonebox1{
+    width:930px;
+}
+#phonebox2{
+    width:750px;
+}
+#phonebox3{
+    width:930px;
+}
+#phonebox4{
+    display:block;
+   width:450px;
+}
+#phonebox5{
+    width:830px;
+}
+#phonebox6{
+    width:350px;
+}
+#phonebox7{
+    margin:30px auto 0 40px
+}
+#infobox1{
+    width:500px
+}
+#infobox2{
+    width:500px
+}
+#accountbox1{
+    margin:30px;
+}
+#accountbox2{
+    margin:30px;
+}
+@media only screen and (max-width: 1000px){
+    .selectcategory{
+        display:none;
+    }
+    .inputitle{
+        
+        width:350px;
+    }
+    #phonebox2{
+        width:500px;
+    }
+    body{
+        width:980px
+    }
+    .box1{
+        width:1040px
+    }
+    .box2{
+        width:980px
+    }
+    .box3{
+        width:980px
+    }
+    #phonebox4{
+        width:300px;
+    }
+    #phonebox5{
+        width:640px;
+    }
+    #phonebox6{
+        width:330px;
+    }
+    #phonebox7{
+        margin:0px auto 0 10px
+    }
+    #infobox1{
+        width:590px
+    }
+    #infobox2{
+        width:590px
+    }
+    #accountbox1{
+        margin:30px 0  0 240px;
+    }
+    #accountbox2{
+        margin:30px 240px 0 0;
+    }
+
+}
+
+@media only screen and (max-width: 650px){
+    body{
+        width:650px
+    }
+    .box1{
+        width:840px
+    }
+    .box2{
+        width:650px
+    }
+    .box3{
+        width:650px
+    }
+    
+    .inputitle{
+        
+        width:250px;
+    }
+    #phonebox1{
+        width:690px;
+    }
+    #phonebox2{
+        width:400px;
+    }
+    #phonebox3{
+        width:460px;;
+    }
+    #phonebox4{
+        display:none;
+    }
+    #phonebox5{
+        width:300px;
+    }
+    #accountbox1{
+        margin:30px 0  0 70px;
+    }
+    #accountbox2{
+        margin:30px 70px 0 0;
+    }
+
+    
+}
+

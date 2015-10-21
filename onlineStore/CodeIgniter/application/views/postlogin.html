@@ -1,0 +1,124 @@
+     </div>
+    
+    <div class="textbox" style="margin:55px 65px auto 30px;float:right;">
+        <BUTTON class="submitbutton" TYPE="submit" name="submit" style="color:#fff"> Submit</button>
+    
+    </div>
+</form>
+
+<script language="JavaScript">
+    $("#loginform").submit(function (event){
+                     //alert(0);
+                     if( validate_required(document.getElementById("username"),"Empty name")==false ){
+                     document.getElementById("username").style.border="1px solid red";
+                     event.preventDefault();
+                     }else{
+                     document.getElementById("username").style.border="1px solid #bdc7d7";
+                     //    return;
+                     }
+                     
+                     if( validate_required(document.getElementById("password"),"Empty pass")==false ){
+                     document.getElementById("password").style.border="1px solid red";
+                     event.preventDefault();
+                     }else{
+                     document.getElementById("password").style.border="1px solid #bdc7d7";
+                     //    return;
+                     }
+                     return;
+                     
+                     });
+                     
+    </script>
+
+
+</div>
+<div class="box3" style="height:420px;border:1px solid #edeff4;padding:20px;margin:20px auto 0 auto" id="phonebox3">
+    <p style="margin:5px 0 15px 30px"><strong>Special Sales Product</strong></p>
+    
+        <?php
+            
+          //  $con=mysql_connect(':/home/scf-27/chentian/mysql.sock', 'root', '1992');//when to close?????
+          //  if(!$con){
+            //    die;//
+           // }
+         //   mysql_select_db('assignment3',$con);
+            $sql5="select * from specialsales";
+            $res5=mysql_query($sql5);
+            $countnum=0;
+            while($row5 = mysql_fetch_assoc($res5))
+            {
+                date_default_timezone_set("UTC");
+                // $nowtime=date("Y-m-d");
+                $nowyear=date("Y");
+                $nowmonth=date("m");
+                $nowday=date("d");
+                $nowstr=$nowyear.$nowmonth.$nowday;
+                //echo $nowstr;
+                $startstr=substr($row5['startdate'],0,4).substr($row5['startdate'],5,2).substr($row5['startdate'],8,2);
+                $endstr=substr($row5['enddate'],0,4).substr($row5['enddate'],5,2).substr($row5['enddate'],8,2);
+                
+                if( !($startstr<=$nowstr &&$endstr>=$nowstr) ){
+                    continue;
+                }
+                
+                
+                
+                
+                $sql6="select * from product where productid='".$row5['productid']."'";
+                $res6=mysql_query($sql6);
+                $row6 = mysql_fetch_assoc($res6);
+   
+                $countnum=$countnum+1;
+                echo '<div style="float:left;width:150px;height:280px;padding:30px;margin:8px 8px 8px 8px;border:1px solid #edeff4">';
+                echo '<div style="width:150px;height:180px;border:1px solid #edeff4">';
+                echo "<img src='";
+                echo asset_url()."".$row6['productimage']."'";
+                echo ' height="180" width="150">';
+                echo ' </div>';
+                
+                echo ' <p style="font-weight:bold">';
+                echo $row6['productname']."</p>";
+                $sql4="select * from specialsales where productid='".$row5['productid']."'";
+                $res4=mysql_query($sql4);
+                
+                if( ($row4 = mysql_fetch_assoc($res4)) ){
+                    //row4['startdate']/enddate
+                    date_default_timezone_set("UTC");
+                    // $nowtime=date("Y-m-d");
+                    $nowyear=date("Y");
+                    $nowmonth=date("m");
+                    $nowday=date("d");
+                    $nowstr=$nowyear.$nowmonth.$nowday;
+                    //echo $nowstr;
+                    $startstr=substr($row4['startdate'],0,4).substr($row4['startdate'],5,2).substr($row4['startdate'],8,2);
+                    $endstr=substr($row4['enddate'],0,4).substr($row4['enddate'],5,2).substr($row4['enddate'],8,2);
+                    
+                    if( $startstr<=$nowstr &&$endstr>=$nowstr){
+                        echo '<p>Price: $';//echo specialsales
+                        echo $row6['productprice']*0.7.'</p>';
+                        
+                        
+                    }
+                    else{
+                        echo '<p>Price: $';//if date not OK just normal price
+                        echo $row6['productprice'].'</p>';
+                    }
+                }
+                else{
+                    
+                    echo '<p>Price: $';//no special sale exist, just normal price
+                    echo $row6['productprice'].'</p>';
+                }
+
+
+                echo '</div>';
+                if($countnum==4){
+                    break;
+                }
+            }
+        ?>
+       
+   </div>
+
+</body>
+</html>

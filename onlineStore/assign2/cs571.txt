@@ -1,0 +1,26 @@
+export TERM=xterm
+ssh -y chentian@aludra.usc.edu
+19920212chent
+
+
+gcc -o warmup2 warmup2.c -g -pthread
+cd ee450_tianyuan_chen_session1/pj
+emacs tel.txt
+
+gcc -o users users.c
+./a.out (file name)
+
+gcc -o patient1 -lsocket -lnsl patient1.c
+cd hospital28T
+
+/usr/usc/bin/gtar cvzf warmup2.tar.gz Makefile w2-README.txt *.c *.h
+
+~csci551b/bin/bsubmit upload -email chentian@usc.edu -event merlot.usc.edu_80_1372906710_74 -file warmup2.tar.gz
+
+
+~/.bistro/tickets/merlot.usc.edu_80_1372906710_73
+
+
+
+
+

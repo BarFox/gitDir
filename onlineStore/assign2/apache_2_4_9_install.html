@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1343.16">
+  <style type="text/css">
+    p.p2 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Courier; color: #000000; -webkit-text-stroke: #000000}
+    p.p6 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000; min-height: 14.0px}
+    li.li5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    span.s1 {font-kerning: none}
+    span.s2 {-webkit-text-stroke: 0px #000000}
+    ul.ul1 {list-style-type: disc}
+  </style>
+</head>
+<body>
+<h3 style="margin: 0.0px 0.0px 14.0px 0.0px; font: 14.0px Times; color: #000000; -webkit-text-stroke: #000000"><span class="s1"><b>Installing Apache 2.4.9</b></span></h3>
+<p class="p2"><span class="s1">All the installation work should be done on aludra.usc.edu. It will go faster. To actually run your Apache web server, you must use the cs-server.usc.edu computer, NOT aludra.usc.edu. You can login to the cs-server computer with the same login that you use for aludra.</span></p>
+<p class="p2"><span class="s1">To install Apache 2.4.9, you must have three other components installed first. They are APR, APR-UTIL, and PCRE. To save disk space, do all the work within /tmp.</span></p>
+<p class="p3"><span class="s1">cd /tmp</span></p>
+<p class="p3"><span class="s1">mkdir chentian</span></p>
+<p class="p3"><span class="s1">cd chentian</span></p>
+<h4 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000"><span class="s1"><b>Configure and install apr</b></span></h4>
+<p class="p3"><span class="s1">tar xvf /home/scf-22/csci350/apr-1.5.1.tar</span></p>
+<p class="p3"><span class="s1">cd apr-1.5.1</span></p>
+<p class="p3"><span class="s1">./configure --prefix=/home/scf-27/chentian/apr</span></p>
+<p class="p3"><span class="s1">make</span></p>
+<p class="p3"><span class="s1">make install</span></p>
+<h4 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000"><span class="s1"><b>Remove all files</b></span></h4>
+<p class="p2"><span class="s1">Make sure you are in the tmp directory</span></p>
+<p class="p3"><span class="s1">cd /tmp/chentian</span></p>
+<p class="p3"><span class="s1">rm -rf *</span></p>
+<h4 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000"><span class="s1"><b>Configure and install apr-util</b></span></h4>
+<p class="p3"><span class="s1">tar xvf /home/scf-22/csci350/apr-util-1.5.3.tar</span></p>
+<p class="p3"><span class="s1">cd apr-util-1.5.3</span></p>
+<p class="p3"><span class="s1">./configure --prefix=/home/scf-27/chentian/apr-util --with-apr=/home/scf-27/chentian/apr</span></p>
+<p class="p3"><span class="s1">make</span></p>
+<p class="p3"><span class="s1">make install</span></p>
+<h4 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000"><span class="s1"><b>Remove all files</b></span></h4>
+<p class="p2"><span class="s1">Make sure you are in the tmp directory</span></p>
+<p class="p3"><span class="s1">cd /tmp/chentian</span></p>
+<p class="p3"><span class="s1">rm -rf *</span></p>
+<h4 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000"><span class="s1"><b>Configure and Install pcre 8.36</b></span></h4>
+<p class="p3"><span class="s1">tar xvf /home/scf-22/csci350/pcre-8.36.tar</span></p>
+<p class="p3"><span class="s1">cd pcre-8.36</span></p>
+<p class="p3"><span class="s1">./configure --prefix=/home/scf-27/chentian/pcre</span></p>
+<p class="p3"><span class="s1">make</span></p>
+<p class="p3"><span class="s1">make install</span></p>
+<p class="p2"><span class="s1">For whatever reason, the make install of PCRE aborts after awhile (at least it did for me). The nice thing is that it doesn't seem to matter. Just proceed as if it worked.</span></p>
+<h4 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000"><span class="s1"><b>Remove all files</b></span></h4>
+<p class="p2"><span class="s1">Make sure you are in the tmp directory</span></p>
+<p class="p3"><span class="s1">cd /tmp/chentian</span></p>
+<p class="p3"><span class="s1">rm -rf *</span></p>
+<h4 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000"><span class="s1"><b>Configure and install Apache 2.4.9</b></span></h4>
+<p class="p3"><span class="s1">tar xvf /home/scf-22/csci350/httpd-2.4.9.tar</span></p>
+<p class="p3"><span class="s1">cd httpd=2.4.9</span></p>
+<p class="p3"><span class="s1">./configure --prefix=/home/scf-27/chentian/apache2 --with-apr=/home/scf-27/chentian/apr --with-apr-util=/home/scf-27/chentian/apr-util --with-pcre=/home/scf-27/chentian/pcre</span></p>
+<p class="p3"><span class="s1">make</span></p>
+<p class="p3"><span class="s1">make install</span></p>
+<h4 style="margin: 0.0px 0.0px 16.0px 0.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000"><span class="s1"><b>Editing httpd.conf</b></span></h4>
+<p class="p2"><span class="s1">Now go into your apache2/conf directory. Edit httpd.conf. Make the following changes:<span class="Apple-converted-space"> </span></span></p>
+<ul class="ul1">
+  <li class="li5"><span class="s2"></span><span class="s1">Change the 'Listen' line value from 80 to your port number. This must be a port number that is not in use by any program.</span></li>
+  <li class="li5"><span class="s2"></span><span class="s1">Change the 'ServerAdmin' line to be your email. You are the administrator of your Apache installation.</span></li>
+  <li class="li5"><span class="s2"></span><span class="s1">If you want the default page to not be 'index.html', change the 'DirectoryIndex index.html' line so that you have your default page, instead of index.html.</span></li>
+</ul>
+<h3 style="margin: 0.0px 0.0px 14.0px 0.0px; font: 14.0px Times; color: #000000; -webkit-text-stroke: #000000"><span class="s1"><b>Starting up your Apache web server</b></span></h3>
+<p class="p2"><span class="s1">Login to cs-server.usc.edu. From your <i>apache2</i> directory, start up Apache as shown below.<span class="Apple-converted-space"> </span></span></p>
+<p class="p3"><span class="s1">./bin/apachectl start</span></p>
+<p class="p6"><span class="s1"></span><br></p>
+</body>
+</html>

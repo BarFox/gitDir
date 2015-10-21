@@ -1,0 +1,4 @@
+javac -cp /Users/chentianyuan/Desktop/decodeFacebook/httpclient-4.3.6.jar;/Users/chentianyuan/Desktop/decodeFacebook/httpcore-4.3.jar; craw.java 
+
+set classpath = /Users/chentianyuan/Desktop/decodeFacebook/httpclient-4.3.6.jar
+set classpath = /Users/chentianyuan/Desktop/decodeFacebook/httpcore-4.3.jar

@@ -1,0 +1,1998 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+     
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    
+<head>   
+    
+     
+    <script type="text/javascript" src="http://c.csdnimg.cn/pubfooter/js/tracking.js" charset="utf-8"></script>  
+
+    <script type="text/javascript">
+        var protocol = window.location.protocol;
+        document.write('<script type="text/javascript" src="' + protocol + '//csdnimg.cn/pubfooter/js/repoAddr2.js?v=' + Math.random() + '"></' + 'script>');
+    </script>
+
+     <script id="allmobilize" charset="utf-8" src="http://a.yunshipei.com/46aae4d1e2371e4aa769798941cef698/allmobilize.min.js"></script>
+ <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+
+    <title>网络爬虫讲解（附java实现的实例） - luojinping的专栏
+        - 博客频道 - CSDN.NET</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="1、shutdown2、poweroff3、init4、reboot5、halt*---具体说明---shutdownreboot在linux下一些常用的关机/重启命令有shutdown、halt、reboot、及init，它们都可以达到重启系统的目的，但每个命令的内部工作过程是不同的，通过本文的介绍，希望你可以更加灵活的运用各种关机命令。" />
+    <script src="http://static.blog.csdn.net/scripts/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://static.blog.csdn.net/scripts/ad.js?v=1.1"></script>
+        <!--new top-->
+               <link rel="stylesheet" href="http://static.csdn.net/public/common/toolbar/css/index.css">        <!--new top-->
+
+    <link rel="Stylesheet" type="text/css" href="http://static.blog.csdn.net/skin/ink/css/style.css?v=1.1" />
+    <link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="/luojinping/rss/list" />
+    <link rel="shortcut icon" href="http://c.csdnimg.cn/public/favicon.ico" />
+    <link type="text/css" rel="stylesheet" href="http://static.blog.csdn.net/scripts/SyntaxHighlighter/styles/default.css" />
+ 
+
+
+</head>
+<body>
+    
+   
+      <!--new top-->
+    <script id="toolbar-tpl-scriptId" fixed="true" prod="blog" skin="black" src="http://static.csdn.net/public/common/toolbar/js/html.js" type="text/javascript"></script>
+     <!--new top-->
+    <div id="container">
+        <div id="header">
+    <div class="header">
+        <div id="blog_title">
+            <h2>
+                <a href="http://blog.csdn.net/luojinping">luojinping的专栏</a></h2>
+            <h3></h3>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</div>
+<div id="navigator">
+    <div class="navigator_bg">
+    </div>
+    <div class="navigator">
+        <ul>
+            
+                <li id="btnContents"><a href="http://blog.csdn.net/luojinping?viewmode=contents"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_mulu'])">
+                    <img src="http://static.blog.csdn.net/images/ico_list.gif">目录视图</span></a></li>
+                <li id="btnView"><a href="http://blog.csdn.net/luojinping?viewmode=list"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_zhaiyao'])">
+                    <img src="http://static.blog.csdn.net/images/ico_summary.gif">摘要视图</span></a></li>
+                <li id="btnRss"><a href="http://blog.csdn.net/luojinping/rss/list"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_RSS'])">
+                    <img src="http://static.blog.csdn.net/images/ico_rss.gif">订阅</span></a></li>                
+
+            </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var username = "luojinping";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/luojinping";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</script>
+
+        <div id="body">
+            <div id="main">
+                <div class="main">
+                        <div class="ad_class">
+<div class="notice tracking-ad" data-mod='popu_3' > 
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/48287419">
+<font color=blue>写博客，送money、送书、送C币啦
+</font></a>
+&nbsp;&nbsp;&nbsp;
+
+
+<a href="http://www.csdn.net/app">
+<font color=red>下载CSDN移动客户端
+</font></a>
+&nbsp;&nbsp;&nbsp;
+
+<a href="http://bss.csdn.net/m/topic/learning_path_weixin">
+<font color=blue>微信开发学习路线高级篇上线
+</font></a>
+&nbsp;&nbsp;&nbsp;
+<a href="http://blog.csdn.net/anzhsoft/article/details/48594363">
+<font color=red>恭喜博主张安站新书上市
+</font></a>
+</div>                        </div>
+                        
+
+  
+<link href="http://static.blog.csdn.net/css/comment1.css" type="text/css" rel="stylesheet" />
+<link href="http://static.blog.csdn.net/css/style1.css" type="text/css" rel="stylesheet" />
+<script language='JavaScript' type='text/javascript' src='http://download.csdn.net/js/jquery.cookie.js'></script>
+<script type="text/javascript" src="http://c.csdnimg.cn/rabbit/search-service/main.js"></script>
+<link rel="stylesheet" href="http://static.blog.csdn.net/public/res-min/markdown_views.css?v=1.0" />
+<script type="text/javascript" src="http://static.blog.csdn.net/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+
+  <script type="text/ecmascript">
+      window.quickReplyflag = true;
+           
+            var isBole = false;
+            
+          
+    </script>
+<div id="article_details" class="details">
+    <div class="article_title">   
+         <span class="ico ico_type_Repost"></span>
+
+
+    <h1>
+        <span class="link_title"><a href="/luojinping/article/details/6870898">
+        网络爬虫讲解（附java实现的实例）            
+        </a></span>
+    </h1>
+</div>
+
+   
+
+    <div class="article_manage">
+        <span class="link_categories">
+        分类：
+            <a href="/luojinping/article/category/905452" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_fenlei']);">主题爬虫</a> 
+        </span>
+    <span class="link_postdate">2011-10-13 17:43</span>
+    <span class="link_view" title="阅读次数">17616人阅读</span>
+    <span class="link_comments" title="评论次数"><a href="#comments" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_pinglun'])">评论</a>(1)</span>
+    <span class="link_collect"><a href="javascript:void(0);" onclick="javascript:collectArticle('网络爬虫讲解（附java实现的实例）','6870898');return false;" title="收藏">收藏</a></span>
+    <span class="link_report"><a href="#report"  onclick="javascript:report(6870898,2);return false;" title="举报">举报</a></span>
+    
+</div>
+<div class="tag2box"><a href='http://www.csdn.net/tag/java' target=_blank onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);">java</a><a href='http://www.csdn.net/tag/%e7%bd%91%e7%bb%9c%e7%88%ac%e8%99%ab' target=_blank onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);">网络爬虫</a><a href='http://www.csdn.net/tag/string' target=_blank onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);">string</a><a href='http://www.csdn.net/tag/exception' target=_blank onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);">exception</a><a href='http://www.csdn.net/tag/url' target=_blank onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);">url</a><a href='http://www.csdn.net/tag/%e6%90%9c%e7%b4%a2%e5%bc%95%e6%93%8e' target=_blank onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_tag']);">搜索引擎</a></div>
+
+  
+
+  
+  
+     
+
+<div id="article_content" class="article_content">
+
+<p><span style="white-space:pre"></span>网络蜘蛛即Web Spider，是一个很形象的名字。把互联网比喻成一个蜘蛛网，那么Spider就是在网上爬来爬去的蜘蛛。网络蜘蛛是通过网页的链接地址来寻找网页，从 网站某一个页面（通常是首页）开始，读取网页的内容，找到在网页中的其它链接地址，然后通过这些链接地址寻找下一个网页，这样一直循环下去，直到把这个网站所有的网页都抓取完为止。如果把整个互联网当成一个网站，那么网络蜘蛛就可以用这个原理把互联网上所有的网页都抓取下来。</p>
+<p>　　<strong>对于搜索引擎来说，要抓取互联网上所有的网页几乎是不可能的，从目前公布的数据来看，容量最大的搜索引擎也不过是抓取了整个网页数量的百分之四十左右。</strong>这其中的原因一方面是抓取技术的瓶颈，无法遍历所有的网页，有许多网页无法从其它网页的链接中找到；另一个原因是存储技术和处理技术的问题，如果按照每个页面的平均大小为20K计算（包含图片），100亿网页的容量是100×2000G字节，即使能够存储，下载也存在问题（按照一台机器每秒下载 20K计算，需要340台机器不停的下载一年时间，才能把所有网页下载完毕）。同时，由于数据量太大，在提供搜索时也会有效率方面的影响。因此，许多搜索引擎的网络蜘蛛只是抓取那些重要的网页，而在抓取的时候评价重要性主要的依据是某个网页的链接深度。</p>
+<p>　　在抓取网页的时候，网络蜘蛛一般有两种策略：广度优先和深度优先。</p>
+<p>&nbsp;&nbsp; 广度优先是指网络蜘蛛会先抓取起始网页中链接的所有网页，然后再选择其中的一个链接网页，继续抓取在此网页中链接的所有网页。这是最常用的方式，因为这个方法可以让网络蜘蛛并行处理，提高其抓取速度。深度优先是指网络蜘蛛会从起始页开始，一个链接一个链接跟踪下去，处理完这条线路之后再转入下一个起始页， 继续跟踪链接。这个方法有个优点是网络蜘蛛在设计的时候比较容易。两种策略的区别，下图的说明会更加明确。</p>
+<p>　　由于不可能抓取所有的网页，有些网络蜘蛛对一些不太重要的网站，设置了访问的层数。例如，在上图中，A为起始网页，属于0层，B、C、D、 E、F属于第1层，G、H属于第2层， I属于第3层。如果网络蜘蛛设置的访问层数为2的话，网页I是不会被访问到的。这也让有些网站上一部分网页能够在搜索引擎上搜索到，另外一部分不能被搜索到。对于网站设计者来说，扁平化的网站结构设计有助于搜索引擎抓取其更多的网页。</p>
+<p>　　网络蜘蛛在访问网站网页的时候，经常会遇到加密数据和网页权限的问题，有些网页是需要会员权限才能访问。当然，网站的所有者可以通过协议让网 络蜘蛛不去抓取（下小节会介绍），但对于一些出售报告的网站，他们希望搜索引擎能搜索到他们的报告，但又不能完全**的让搜索者查看，这样就需要给网络蜘 蛛提供相应的用户名和密码。网络蜘蛛可以通过所给的权限对这些网页进行网页抓取，从而提供搜索。而当搜索者点击查看该网页的时候，同样需要搜索者提供相应的权限验证。</p>
+<p>　网站与网络蜘蛛</p>
+<p>　　网络蜘蛛需要抓取网页，不同于一般的访问，如果控制不好，则会引起网站服务器负担过重。去年4月，淘宝 <a href="http://www.taobao.com/">
+http://www.taobao.com</a>）就因为雅虎搜索引擎的网络蜘蛛抓取其数据引起淘宝网服务器的不稳定。网站是否就无法和网络蜘蛛交流呢？其实不然，有多种方法可以让网站和网络蜘蛛进行交流。一方面让网站管理员了解网络蜘蛛都来自哪儿，做了些什么，另一方面也告诉网络蜘蛛哪些网页不应该抓取，哪 些网页应该更新。</p>
+<p>　　每个网络蜘蛛都有自己的名字，在抓取网页的时候，都会向网站标明自己的身份。网络蜘蛛在抓取网页的时候会发送一个请求，这个请求中就有一个字段为User－agent，用于标识此网络蜘蛛的身份。例如Google网络蜘蛛的标识为GoogleBot，Baidu网络蜘蛛的标识为BaiDuSpider， Yahoo网络蜘蛛的标识为Inktomi Slurp。如果在网站上有访问日志记录，网站管理员就能知道，哪些搜索引擎的网络蜘蛛过来过，什么时候过来的，以及读了多少数据等等。如果网站管理员发现某个蜘蛛有问题，就通过其标识来和其所有者联系。下面是博客中<a href="http://www.blogchina.com/">http://www.blogchina.com</a>）2004年5月15日的搜索引擎访问日志：</p>
+<p>　　网络蜘蛛进入一个网站，一般会访问一个特殊的文本文件Robots.txt，这个文件一般放在网站服务器的根目录下，<a href="http://www.blogchina.com/robots.txt">http://www.blogchina.com/robots.txt</a>。网站管理员可以通过robots.txt来定义哪些目录网络蜘蛛不能访问，或者哪些目录对于某些特定的网络蜘蛛不能访问。例如有些网站的可执行文件目录和临时文件目录不希望被搜索引擎搜索到，那么网站管理员就可以把这些目录定义为拒绝访问目录。Robots.txt语法很简单，例如如果对目录没有任何限制，可以用以下两行来描述：<br>
+　　User-agent: * <br>
+　　Disallow:</p>
+<p>　　当然，Robots.txt只是一个协议，如果网络蜘蛛的设计者不遵循这个协议，网站管理员也无法阻止网络蜘蛛对于某些页面的访问，但一般的网络蜘蛛都会遵循这些协议，而且网站管理员还可以通过其它方式来拒绝网络蜘蛛对某些网页的抓取。</p>
+<p>　　网络蜘蛛在下载网页的时候，会去识别网页的HTML代码，在其代码的部分，会有META标识。通过这些标识，可以告诉网络蜘蛛本网页是否需要被抓取，还可以告诉网络蜘蛛本网页中的链接是否需要被继续跟踪。例如：表示本网页不需要被抓取，但是网页内的链接需要被跟踪。</p>
+<p>　　现在一般的网站都希望搜索引擎能更全面的抓取自己网站的网页，因为这样可以让更多的访问者能通过搜索引擎找到此网站。为了让本网站的网页更全面被抓取到，网站管理员可以建立一个<strong>网站地图，即SiteMap</strong>。许多网络蜘蛛会把sitemap.htm文件作为一个网站网页爬取的入口，网站管理员可以把网站内部所有网页的链接放在这个文件里面，那么网络蜘蛛可以很方便的把整个网站抓取下来，避免遗漏某些网页，也会减小对网站服务器的负担。</p>
+<p>　　内容提取</p>
+<p>　　搜索引擎建立网页索引，处理的对象是文本文件。对于网络蜘蛛来说，抓取下来网页包括各种&#26684;式，包括html、图片、doc、pdf、多媒体、 动态网页及其它&#26684;式等。这些文件抓取下来后，需要把这些文件中的文本信息提取出来。准确提取这些文档的信息，一方面对搜索引擎的搜索准确性有重要作用，另一方面对于网络蜘蛛正确跟踪其它链接有一定影响。</p>
+<p>　　对于doc、pdf等文档，这种由专业厂商提供的软件生成的文档，厂商都会提供相应的文本提取接口。网络蜘蛛只需要调用这些插件的接口，就可以轻松的提取文档中的文本信息和文件其它相关的信息。</p>
+<p>　　HTML等文档不一样，HTML有一套自己的语法，通过不同的命令标识符来表示不同的字体、颜色、位置等版式，如：、、等，提取文本信息时需要把这些标识符都过滤掉。过滤标识符并非难事，因为这些标识符都有一定的规则，只要按照不同的标识符取得相应的信息即可。但在识别这些信息的时候，需要同步记录许多版式信息，例如文字的字体大小、是否是标题、是否是加粗显示、是否是页面的关键词等，这些信息有助于计算单词在网页中的重要程度。同时，对于 HTML网页来说，除了标题和正文以外，会有许多<strong>广告链接</strong>以及<strong>公共的频道链接</strong>，这些链接和文本正文一点关系也没有，在提取网页内容的时候，也需要过滤这些
+ 无用的链接。例如某个网站有“产品介绍”频道，因为导航条在网站内每个网页都有，若不过滤导航条链接，在搜索“产品介绍”的时候，则网站内每个网页都会搜索到，无疑会带来大量垃圾信息。过滤这些无效链接需要统计大量的网页结构规律，抽取一些共性，统一过滤；对于一些重要而结果特殊的网站，还需要个别处理。这就需要网络蜘蛛的设计有一定的扩展性。</p>
+<p>　　对于多媒体、图片等文件，一般是通过链接的锚文本（即，链接文本）和相关的文件注释来判断这些文件的内容。例如有一个链接文字为“张曼玉照片 ”，其链接指向一张bmp&#26684;式的图片，那么网络蜘蛛就知道这张图片的内容是“张曼玉的照片”。这样，在搜索“张曼玉”和“照片”的时候都能让搜索引擎找到这张图片。另外，许多多媒体文件中有文件属性，考虑这些属性也可以更好的了解文件的内容。</p>
+<p>　　<strong>动态网页一直是网络蜘蛛面临的难题。</strong>所谓动态网页，是相对于静态网页而言，是由程序自动生成的页面，这样的好处是可以快速统一更改网页风&#26684;，也可以减少网页所占服务器的空间，但同样给网络蜘蛛的抓取带来一些麻烦。由于开发语言不断的增多，动态网页的类型也越来越多，如：asp、jsp、php 等。这些类型的网页对于网络蜘蛛来说，可能还稍微容易一些。网络蜘蛛比较难于处理的是一些脚本语言（如VBScript和javascript）生成的网页，如果要完善的处理好这些网页，网络蜘蛛需要有自己的脚本解释程序。对于许多数据是放在数据库的网站，需要通过本网站的数据库搜索才能获得信息，这些给网络蜘蛛的抓取带来很大的困难。对于这类网站，如果网站设计者希望这些数据能被搜索引擎搜索，则需要提供一种可以遍历整个数据库内容的方法。</p>
+<p>　<strong>　对于网页内容的提取，一直是网络蜘蛛中重要的技术。整个系统一般采用插件的形式，通过一个插件管理服务程序，遇到不同&#26684;式的网页采用不同的插件处理。这种方式的好处在于扩充性好，以后每发现一种新的类型，就可以把其处理方式做成一个插件补充到插件管理服务程序之中。</strong></p>
+<p>　　更新周期</p>
+<p>　　由于网站的内容经常在变化，因此网络蜘蛛也需不断的更新其抓取网页的内容，这就需要网络蜘蛛按照一定的周期去扫描网站，查看哪些页面是需要更新的页面，哪些页面是新增页面，哪些页面是已经过期的死链接。</p>
+<p>　　搜索引擎的更新周期对搜索引擎搜索的查全率有很大影响。如果更新周期太长，则总会有一部分新生成的网页搜索不到；周期过短，技术实现会有一定难度，而且会对带宽、服务器的资源都有浪费。搜索引擎的网络蜘蛛并不是所有的网站都采用同一个周期进行更新，对于一些重要的更新量大的网站，更新的周期短，如有些新闻网站，几个小时就更新一次；相反对于一些不重要的网站，更新的周期就长，可能一两个月才更新一次。</p>
+<p>　　一般来说，网络蜘蛛在更新网站内容的时候，不用把网站网页重新抓取一遍，对于大部分的网页，只需要判断网页的属性（主要是日期），把得到的属性和上次抓取的属性相比较，如果一样则不用更新。</p>
+<p><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Spider的实现细节</p>
+<p>a.&nbsp; URL 的组织和管理考虑到系统自身的资源和时间有限，Spider程序应尽可能的对链接进行筛选，以保证获取信息的质量和效率。Spider程序对新URL 的选择往往与搜索引擎的类型、目标集合、能够处理信息的类型、资源的限制和是否支持Robots限制协议有关。</p>
+<p>概括为以下几点: </p>
+<p>访问过的和重复的URL排除 </p>
+<p>文件类型必须被系统处理，不能处理的URL排除 </p>
+<p>不在目标集合中的排除，被Rohots.txt限制的排除</p>
+<p>URL排序也是减轻系统负担的重要手段之一。这就要求计算URL的重要性，如果评估新URI的重要性较高，则会冲掉旧的URL。无论任何情况下，对 Spider而言，首先访问目标集合中的重要站点都是意义和重要的。但是一个页面的重要性的准确评估只能在分析其内容之后进行。可以根据一个页面链接数量的多少来评估此页面是否重要;或者对URL 地址进行解析其中的内容例如以&quot;.com&quot;, &quot;.edu&quot;，&quot;.cn&quot;就较为重要一些，或者可以根据页而标题与当前的热点问题是否相近或相关来评定其页面的重要性。决定网站或页面的重要性的因素很多，也根据各个搜索引擎的侧重点不同而各异，最终的评估方法都依赖于该搜索引擎对于资源获取的要求来决定。<strong>影响Spider速度的一种重要因素是DNS查询，为此每个
+ Spider都要维护一个自己的DNS缓冲。</strong>这样每个链接都处于不同的状态，包括:DNS 查询、连接到主机、发送请求、得到响应。这些因素综合起来使得Spider变成一个非常复杂的系统。</p>
+<p>b. Spider的遍历规则：页面的遍历主要有两种方式:深度遍历和广度遍历。深度遍历算法可以获得的信息较为集中，信息比较完整，但覆盖面就比较有限，广度遍历算法则刚好相反。</p>
+<p>c. Spider实现中的主要问题：虽然Spider的功能很强，但也存在不少的问题:</p>
+<p>(1)如果一组URL地址没有被组外URL所链接到，那么Spider就找不到它们。由于spider不能更新过快(因为网络带宽是有限的，更新过快就会影响其他用户的正常使用)，难免有不能及时加入的新网站或新页面。</p>
+<p>(2)spider程序在遍历Web时也存在危险，很可能遇到一个环链接而陷入死循环中。简单的避免方法就是忽略已访问过的URL,或限制网站的遍历深度。</p>
+<p>(3) Spider程序时大型搜索引擎中很脆弱的部分，因为它与很多的Web报务器、不同的域名服务器打交道，而这些服务完全在系统的控制之外。由于网络上包含了大量的垃圾信息，Spider很可能会收取这些垃圾信息。一个页面出现问题也很可能引起Spider程序中止、崩溃或其他不可预料的行为。<strong>因此访问 Internet的Spider程序应该设计得非常强壮，充分考虑各种可能遇到的情况，让Spider在遇到各种情况时可以采取相应的处理行为，而不至于获得一些垃圾信息或者直接就对程序本身造成危害。</strong></p>
+<p>Spider构架</p>
+<p>发现、搜集网页信息需要有高性能的“网络蜘蛛”程序〔Spider〕去自动地在互联网中搜索信息。一个典型的网络蜘蛛工作的方式:查看一个页面，并从中找到相关信息，然后它再从该页面的所有链接中出发，继续寻找相关的信息，以此类推。网络蜘蛛在搜索引擎整体结构中的位置如下图所示: 初始化时，网络蜘蛛一般指向一个URL ( Uniform ResourceLocator)池。在遍历Internet的过程中，按照深度优先或广度优先或其他启发式算法从URL池中取出若干URL进行处理，同时将未访问的 URL放入URL池中，这样处理直到URL池空为止。对Web文档的索引则根据文档的标题、首段落甚至整个页面内容进行，这取决于搜索服务的数据收集策略。</p>
+<p>网络蜘蛛在漫游的过程中，根据页面的标题、头、链接等生成摘要放在索引数据库中。如果是全文搜索，还需要将整个页面的内容保存到本地数据库。网络蜘蛛为实现其快速地浏览整个互联网，通常在技术上采用<strong>抢先式多线程</strong>技术实现在网上搜索信息。通过抢先式多线程的使用，你能索引一个基于URL链接的 Web页面，启动一个新的线程跟随每个新的URL链接，索引一个新的URL起点。当然在服务器上所开的线程也不能无限膨胀，需要在服务器的正常运转和快速 收集网页之间找一个平衡点。</p>
+<p>在整个搜索引擎工作过程中，整个蜘蛛的数据入口是URL地址，数据出口是Web页仓库。Spider程序发现URL链接以后，经过Stor处理模块，将我们所需要的网页数据存储在Web页仓库中，为以后的形成网页快照、网页分析提供基础数据。在Spider程序工作的过程中，发现新的链接，对该链接进行分析，形成新的搜索地址，作为下一次Spider程序的数据输入。这个过程的实现就是Spider程序的队列管理。</p>
+<p>Spider程序的工作过程，简单来讲，就是不断发现新的链接，并对该链接对应的页面分析存储的工程。如下图所示，</p>
+<p>一、索引器： 索引器的功能是理解搜索器所搜集的信息，从中抽取出索引项，用于表示文档以及生成文档库的索引表。索引项有<strong>客观索引项</strong>和<strong>内容索引项</strong>两种: 客观项：与文档的语意内容无关，如作者名、URL、更新时间、编码、长度、链接流行度(Link Popularity)等等; 内容索引项：是用来反映文档内容的，如关键词及其权重、短语、词、字等等。内容索引项可以分为单索引项和多索引项(或称短语索引项)两种。单索引项对于英文来讲是英语单词，比较容易提取，因为单词之间有天然的分隔符(空&#26684;);对于中文等连续书写的语言，必须采用多索引项，进行词语的切分。索引器可以使用集中式索引算法或分布式索引算法。当数据量很大时，必须实现实时索引(Real-time
+ Indexing),否则不能够跟上信息量急剧增加的速度。索引算法对索引器的性能(如大规模峰&#20540;查询时的响应速度)有很大的影响。一个搜索引擎的有效性 在很大程度取决于索引的质量。 由于汉文字符多，处理复杂，中文词的处理不容易。<strong>索引器中的中文分词技术： 一个分词系统=分词程序&#43;分词词典</strong>(1)最大匹配法MM (2)反向最大匹配法RMM (1)最佳匹配法OM (1)双向扫描法[百度的分词就采用了双向扫描法] 系统关键是：分词精度和分词速度</p>
+<p>二、建立索引的方法： 为了加快检索速度，搜索引擎要对Snider程序搜集到的信,建立倒排索引。 （1）全文索引和部分索引有些搜索引擎对于信息库中的页面建立全文索引，有些只建立摘要部分索引或者每个段落前面部分的索引。还有些搜索引擎在建立索引时，要同时考虑超文本的不同标记所表示的含义，如粗体、大字体显示的东西往往比较重要。有些搜索引擎还在建立索引的过程中收集页面中的超链接。这些超链接反映了收集到的信息之间的空间结构。利用这些结果信息可以提高页面相关度判别时的准确度。（2）是否过滤无用词由于网页中存在这许多无用(无实际意义)单词，例如“啊”、“的”等。这此词往往不能明确表达该网页信息，所以有些搜索引擎保存一个无用词汇表，在建立索引时将不对这些词汇建立索引。
+ （3）是否使用Meta标记中的信息网页中的Meta标记用来标注一些非常显示性的信息。有些网页将页面的关键词等信息放在其中。便于在建立索引的过程中提高这些词汇的相关度。（4）是否对图像标记中的替换文本(ALT text)或页面中的注解建立索引由于现有的搜索引擎对图像的检索技术还不太成熟，大多数搜索引擎不支持图像的检索。在超文木的结构页面中，图像标记中往往存放着图像的替换信息。这些信息说明了该图像对应的图像的基本信息。（5）是否支持词干提取技术</p>
+<p>三、建立索引的过程： 分析过程对文档进行索引并存储到存储桶中排序过程</p>
+<p>Spider处理流程</p>
+<p>当一个URL被加入到等待队列中时Spider程序就会开始运行。只要等待队列中有一个网页或Spider程序正在处理一个网页，Spider程序就会继续它的工作。当等待队列为空并且当前没有处理任何网页，Spider程序就会停止它的工作。</p>
+<p>Spider程序实现初探</p>
+<p>Spider 程序是从网上下载Web页面再对其进行处理，为了提高效率，很显然要采用多线程的方法，几个Spider线程同时并行工作，访问不同的链接。构造 Spider程序有两种方式。第一种是将它设计为递归程序，第二种是将它编写成非递归的程序。递归是在一个方法中调用它本身的程序设计技术。当需要重复做同样的基本仟务或在处理先前任务时可展现将来的任务信息时，递归是相当实用的。例如下面的代码:</p>
+<p>void RecursiveSpider(String url) {</p>
+<p>download URL……</p>
+<p>parse URL……</p>
+<p>while found each URL</p>
+<p>call RecursiveSpider(found URL) ……</p>
+<p>process the page just downloaded……</p>
+<p>} 这段代码查看单独的一个Web页的任务放在一个RecursiveSpider方法中。在此，调用RecursiveSipder方法来访问URL。当它发现链接时，该方法调用它自己。<strong>递归方法在访问很少的网页时，可以使用。</strong>因为当一个递归程序运行时要把每次递归压入堆栈(堆栈是个程序结构，每次调用一个方法时，将返回地址存入其中)。如果递归程序要运行很多次，堆栈会变得非常大，它可能会耗尽整个堆栈内存而导致程序中止。递归还有个问题是多线程和递归是不兼容的，因为在这一过程中每一个线程都是自己的堆栈。当一个方法调用它自身时，它们需要使用同一个堆栈。这就是说递归的Spider程序不能使用多线程。
+ 非递归程序不调用自身，而是采用队列的方法。队列就是排队，要得到程序的处理就必须在队列中排队等待。我们在构造造Spider时就采用该方式。使用非递归的方法时，给定Spider程序一个要访问的页面，它会将其加入到要访问的站点的队列中去。当Spider发现新的链接时，也会将它们加入到该队列中。 Spider程序会顺序处理队列中的每一个网页。实际在Spider程序中使用了四个队列;<strong>在Spider程序的构造过程中，有两种方法用于访问队列的管理。一种方法就是基于内存的队列管理。</strong></p>
+<p><strong>第二种方法就是基于SQL的队列管理。</strong>基于SQL的队列和基于内存的队列都是有效的，在校园网上做实验的结果表明，在系统运行过程中间，如果 Spider 的访问任务随着网页数量增加，基于内存的Spider程序效率会下降。因而，<strong>选择基于SQL的队列管理方案来构造本Spider程序。</strong></p>
+<p>等待队列: 在这个队列中，URL等待被Spider程序处理。新发现的URL被加入到该处理队列:当Spider开始处理URL时，它们被传送到这一队列。当一个 URL被处理后它被移送到错误队列或完成队列: 错误队列: 如果下载某一页面时出现错误，它的URL将被加入该队列。该队列的URL不会再移动到其他队列。被列入该队列的URL将不再会被Spider程序处理。</p>
+<p>完成队列: 如果页面的下载没有出现任何错误，则该页面将会被加入完成队列。加入该队列的URL不会再移动到其他队列。同一时刻一个URL只能在一个队列中。其实通俗的讲就是该URL处于什么状态，URL 状态的变化过程就是程序处理URL的过程。下图说明的一个URL状态的变化过程。 Spider程序会遇到三种连接：内部连接外部连接其他连接,一个示例Spider类：</p>
+<p>&nbsp;</p>
+<p>Java代码 <br>
+import java.awt.*; <br>
+<br>
+import java.net.*; <br>
+import java.io.*; <br>
+import java.lang.*; <br>
+import java.util.*; <br>
+<br>
+<br>
+class node{ <br>
+private Object data; <br>
+private node next; <br>
+private node prev; <br>
+public node(Object o){ <br>
+data = o; <br>
+prev = next = null; <br>
+} <br>
+public String toString(){ <br>
+if(next!=null)return data.toString() &#43; &quot;\n&quot;&#43; next.toString(); <br>
+return data.toString(); <br>
+} <br>
+public node getNext(){return next;} <br>
+public void setNext(node n){next = n;} <br>
+public node getPrev(){return prev;} <br>
+public void setPrev(node n){prev = n;} <br>
+public Object getData(){return data;} <br>
+} <br>
+<br>
+class linkedlist{ <br>
+node head; <br>
+node tail; <br>
+public linkedlist(){ <br>
+tail = head = null; <br>
+} <br>
+public String toString(){ <br>
+if(head==null)return &quot;Empty list&quot;; <br>
+return head.toString(); <br>
+} <br>
+public void insert(Object o){ <br>
+if(tail==null){ <br>
+head = tail = new node(o); <br>
+}else{ <br>
+node nn = new node(o); <br>
+tail.setNext(nn); <br>
+tail=nn; <br>
+} <br>
+} <br>
+public boolean contains(Object o){ <br>
+for(node n = head;n!=null;n=n.getNext()){ <br>
+if(o.equals(n.getData()))return true; <br>
+} <br>
+return false; <br>
+} <br>
+public Object pop(){ <br>
+if(head==null)return null; <br>
+Object ret = head.getData(); <br>
+head = head.getNext(); <br>
+if(head==null)tail = null; <br>
+return ret; <br>
+} <br>
+public boolean isEmpty(){ <br>
+return head==null; <br>
+} <br>
+} <br>
+<br>
+<br>
+class list{ <br>
+protected node tail; <br>
+protected node ptr; <br>
+private boolean stop; <br>
+public list(){ <br>
+ptr=tail=null; <br>
+stop=false; <br>
+} <br>
+public boolean isEmpty(){return tail==null;} <br>
+public void reset(){ <br>
+stop=false; <br>
+ptr=tail; <br>
+} <br>
+public String toString(){ <br>
+if(tail==null)return &quot;Empty list&quot;; <br>
+String ret=&quot;&quot;; <br>
+for(node n =tail.getNext();n!=tail;n=n.getNext())ret&#43;=n.getData().toString()&#43;&quot;\n&quot;;<br>
+ret&#43;=tail.getData().toString(); <br>
+return ret; <br>
+} <br>
+public Object get(){ <br>
+if(ptr==null)return null; <br>
+ptr = ptr.getNext(); <br>
+if(ptr==tail.getNext()){ <br>
+if(stop)return null; <br>
+stop=true; <br>
+return tail.getNext().getData(); <br>
+} <br>
+return ptr.getData(); <br>
+} <br>
+public void insert(Object o, boolean attail){ <br>
+node nn = new node(o); <br>
+if(tail==null){ <br>
+nn.setNext(nn); <br>
+&nbsp;&nbsp; nn.setPrev(nn); <br>
+&nbsp;&nbsp; ptr=tail=nn; <br>
+&nbsp;&nbsp; return; <br>
+} <br>
+if(attail){ <br>
+tail.getNext().setPrev(nn); <br>
+&nbsp;&nbsp; nn.setNext(tail.getNext()); <br>
+&nbsp;&nbsp; tail.setNext(nn); <br>
+&nbsp;&nbsp; nn.setPrev(tail); <br>
+&nbsp;&nbsp; tail=nn; <br>
+}else{ <br>
+&nbsp;&nbsp; nn.setNext(tail.getNext()); <br>
+&nbsp;&nbsp; nn.setPrev(tail); <br>
+&nbsp;&nbsp; tail.setNext(nn); <br>
+&nbsp;&nbsp; nn.getNext().setPrev(nn); <br>
+} <br>
+} <br>
+public void insert(Object o){} <br>
+} <br>
+&nbsp;&nbsp; <br>
+class stack extends list{ <br>
+public stack(){super();} <br>
+public void insert(Object o){insert(o, false);} <br>
+} <br>
+class queue extends list{ <br>
+public queue(){super();} <br>
+public void insert(Object o){insert(o, true);} <br>
+public String peek(){ <br>
+&nbsp;&nbsp; if(tail==null)return &quot;&quot;; <br>
+&nbsp;&nbsp; return tail.getNext().getData().toString(); <br>
+} <br>
+public Object pop(){ <br>
+if(tail==null)return null; <br>
+Object ret = tail.getNext().getData(); <br>
+if(tail.getNext()==tail){ <br>
+&nbsp;&nbsp; tail=ptr=null; <br>
+}else{ <br>
+&nbsp;&nbsp; if(tail.getNext()==ptr)ptr=ptr.getNext(); <br>
+&nbsp;&nbsp; tail.setNext(tail.getNext().getNext()); <br>
+} <br>
+return ret; <br>
+} <br>
+} <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; <br>
+class hashtable{ <br>
+&nbsp;&nbsp; private Vector table; <br>
+&nbsp;&nbsp; private int size; <br>
+&nbsp;&nbsp; public hashtable(){ <br>
+size = 991; <br>
+table = new Vector(); <br>
+for(int i=0;i&lt;size;i&#43;&#43;){ <br>
+&nbsp;&nbsp; table.add(new linkedlist()); <br>
+} <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; public void insert(Object o){ <br>
+int index = o.hashCode(); <br>
+index = index % size; <br>
+if(index&lt;0)index&#43;=size; <br>
+linkedlist ol = (linkedlist)table.get(index); <br>
+ol.insert(o); <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; public boolean contains(Object o){ <br>
+int index = o.hashCode(); <br>
+index = index % size; <br>
+if(index&lt;0)index&#43;=size; <br>
+return ((linkedlist)(table.get(index))).contains(o); <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; public String toString(){ <br>
+String ret =&quot;&quot;; <br>
+for(int i=0;i&lt;size;i&#43;&#43;){ <br>
+&nbsp;&nbsp; if(!((linkedlist)(table.get(i))).isEmpty()){ <br>
+ret&#43;=&quot;\n&quot;; <br>
+ret&#43;=table.get(i).toString(); <br>
+&nbsp;&nbsp; } <br>
+} <br>
+return ret; <br>
+&nbsp;&nbsp; } <br>
+} <br>
+&nbsp;&nbsp; <br>
+class spider implements Runnable{ <br>
+public queue todo; <br>
+public stack done; <br>
+public stack errors; <br>
+public stack omittions; <br>
+private hashtable allsites; <br>
+private String last=&quot;&quot;; <br>
+&nbsp;&nbsp; int maxsites; <br>
+&nbsp;&nbsp; int visitedsites; <br>
+&nbsp;&nbsp; int TIMEOUT; <br>
+&nbsp;&nbsp; String base; <br>
+&nbsp;&nbsp; String []badEndings2 = {&quot;ps&quot;, &quot;gz&quot;}; <br>
+&nbsp;&nbsp; String []badEndings3 = {&quot;pdf&quot;, &quot;txt&quot;,&quot;zip&quot;, &quot;jpg&quot;, &quot;mpg&quot;, &quot;gif&quot;,&quot;mov&quot;, &quot;tut&quot;, &quot;req&quot;, &quot;abs&quot;,&quot;swf&quot;, &quot;tex&quot;, &quot;dvi&quot;, &quot;bin&quot;,&quot;exe&quot;, &quot;rpm&quot;};<br>
+&nbsp;&nbsp; String []badEndings4 = {&quot;jpeg&quot;, &quot;mpeg&quot;}; <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; public spider(String starturl, int max, String b){ <br>
+TIMEOUT = 5000; <br>
+base = b; <br>
+allsites = new hashtable(); <br>
+todo = new queue(); <br>
+done = new stack(); <br>
+errors = new stack(); <br>
+omittions = new stack(); <br>
+try{ <br>
+&nbsp;&nbsp; URL u = new URL(starturl); <br>
+&nbsp;&nbsp; todo.insert(u); <br>
+}catch(Exception e){ <br>
+&nbsp;&nbsp; System.out.println(e); <br>
+&nbsp;&nbsp; errors.insert(&quot;bad starting url &quot;&#43;starturl&#43;&quot;,&quot;&#43;e.toString()); <br>
+} <br>
+maxsites = max; <br>
+visitedsites = 0; <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; /* <br>
+&nbsp;&nbsp; * how many millisec to wait for each page <br>
+&nbsp;&nbsp; */ <br>
+&nbsp;&nbsp; public void setTimer(int amount){ <br>
+TIMEOUT = amount; <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; /* <br>
+&nbsp;&nbsp; * strips the '#' anchor off a url <br>
+&nbsp;&nbsp; */ <br>
+&nbsp;&nbsp; private URL stripRef(URL u){ <br>
+try{ <br>
+&nbsp;&nbsp; return new URL(u.getProtocol(), u.getHost(), u.getPort(),u.getFile()); <br>
+}catch(Exception e){return u;} <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; /* <br>
+&nbsp;&nbsp; * adds a url for future processing <br>
+&nbsp;&nbsp; */ <br>
+&nbsp;&nbsp; public void addSite(URL toadd){ <br>
+if(null!=toadd.getRef())toadd = stripRef(toadd); <br>
+if(!allsites.contains(toadd)){ <br>
+&nbsp;&nbsp; allsites.insert(toadd); <br>
+&nbsp;&nbsp; if(!toadd.toString().startsWith(base)){ <br>
+omittions.insert(&quot;foreign URL: &quot;&#43;toadd.toString()); <br>
+return; <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; if(!toadd.toString().startsWith(&quot;http&quot;) &amp;&amp;!toadd.toString().startsWith(&quot;HTTP&quot;)){<br>
+omittions.insert(&quot;ignoring URL: &quot;&#43;toadd.toString()); <br>
+return; <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; String s = toadd.getFile(); <br>
+&nbsp;&nbsp; String last=&quot;&quot;; <br>
+&nbsp;&nbsp; String []comp={}; <br>
+&nbsp;&nbsp; if(s.charAt(s.length()-3)=='.'){ <br>
+last = s.substring(s.length()-2); <br>
+comp = badEndings2; <br>
+&nbsp;&nbsp; }else if(s.charAt(s.length()-4)=='.'){ <br>
+last = s.substring(s.length()-3); <br>
+comp = badEndings3; <br>
+&nbsp;&nbsp; }else if(s.charAt(s.length()-5)=='.'){ <br>
+last = s.substring(s.length()-4); <br>
+comp = badEndings4; <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; for(int i=0;i&lt;comp.length;i&#43;&#43;){ <br>
+if(last.equalsIgnoreCase(comp[i])){//loop through all bad extensions <br>
+&nbsp;&nbsp;&nbsp;&nbsp; omittions.insert(&quot;ignoring URL:&quot;&#43;toadd.toString()); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; return; <br>
+} <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp; todo.insert(toadd); <br>
+} <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; /* <br>
+&nbsp;&nbsp; * true if there are pending urls and the maximum hasn't beenreached <br>
+&nbsp;&nbsp; */ <br>
+&nbsp;&nbsp; public boolean hasMore(){ <br>
+return !todo.isEmpty() &amp;&amp; visitedsites&lt;maxsites; <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; /* <br>
+&nbsp;&nbsp; * returns the next site, works like enumeration, will return newvalues each time<br>
+&nbsp;&nbsp; */ <br>
+&nbsp;&nbsp; private URL getNextSite(){ <br>
+last = todo.peek(); <br>
+visitedsites&#43;&#43;; <br>
+return (URL)todo.pop(); <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; /* <br>
+&nbsp;&nbsp; * Just to see what we are doing now... <br>
+&nbsp;&nbsp; */ <br>
+&nbsp;&nbsp; public String getCurrent(){ <br>
+return last; <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; /* <br>
+&nbsp;&nbsp; * process the next site <br>
+&nbsp;&nbsp; */ <br>
+&nbsp;&nbsp; public void doNextSite(){ <br>
+URL current = getNextSite(); <br>
+if(current==null)return; <br>
+try{ <br>
+&nbsp;&nbsp; //System.err.println(&quot;Processing #&quot;&#43;visitedsites&#43;&quot;:&quot;&#43;current); <br>
+&nbsp;&nbsp; parse(current); <br>
+&nbsp;&nbsp; done.insert(current); <br>
+} <br>
+catch(Exception e){ <br>
+&nbsp;&nbsp; errors.insert(&quot;Bad site: &quot;&#43;current.toString()&#43;&quot;,&quot;&#43;e.toString()); <br>
+} <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; public void run(){ <br>
+while(hasMore())doNextSite(); <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; /* <br>
+&nbsp;&nbsp; * to print out the internal data structures <br>
+&nbsp;&nbsp; */ <br>
+&nbsp;&nbsp; public String toString(){return getCompleted()&#43;getErrors();} <br>
+&nbsp;&nbsp; private String getErrors(){ <br>
+if(errors.isEmpty())return &quot;No errors\n&quot;; <br>
+else return &quot;Errors:\n&quot;&#43;errors.toString()&#43;&quot;\nEnd oferrors\n&quot;; <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; private String getCompleted(){ <br>
+return &quot;Completed Sites:\n&quot;&#43;done.toString()&#43;&quot;\nEnd of completedsites\n&quot;; <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; /* <br>
+&nbsp;&nbsp; * Parses a web page at (site) and adds all the urls it sees <br>
+&nbsp;&nbsp; */ <br>
+&nbsp;&nbsp; private void parse(URL site) throws Exception{ <br>
+String source=getText(site); <br>
+String title=getTitle(source); <br>
+if(title.indexOf(&quot;404&quot;)!=-1 || <br>
+&nbsp;&nbsp; title.indexOf(&quot;Error&quot;)!=-1 || <br>
+&nbsp;&nbsp; title.indexOf(&quot;Not Found&quot;)!=-1){ <br>
+&nbsp;&nbsp; throw new Exception ((&quot;404, Not Found: &quot;&#43;site)); <br>
+} <br>
+int loc, beg; <br>
+boolean hasLT=false; <br>
+boolean hasSp=false; <br>
+boolean hasF=false; <br>
+boolean hasR=false; <br>
+boolean hasA=false; <br>
+boolean hasM=false; <br>
+boolean hasE=false; <br>
+for(loc=0;loc&lt;source.length();loc&#43;&#43;){ <br>
+&nbsp;&nbsp; char c = source.charAt(loc); <br>
+&nbsp;&nbsp; if(!hasLT){ <br>
+hasLT = (c=='&lt;'); <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; //search for &quot;&lt;a &quot; <br>
+&nbsp;&nbsp; else if(hasLT &amp;&amp; !hasA &amp;&amp; !hasF){ <br>
+if(c=='a' || c=='A')hasA=true; <br>
+else if(c=='f' || c=='F')hasF=true; <br>
+else hasLT=false; <br>
+&nbsp;&nbsp; }else if(hasLT &amp;&amp; hasA &amp;&amp; !hasF &amp;&amp;!hasSp){ <br>
+if(c==' ' || c=='\t' || c=='\n')hasSp=true; <br>
+else hasLT = hasA = false; <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; //search for &quot;&lt;frame &quot; <br>
+&nbsp;&nbsp; else if(hasLT &amp;&amp; hasF &amp;&amp; !hasA &amp;&amp; !hasR){ <br>
+if(c=='r' || c=='R')hasR=true; <br>
+else hasLT = hasF = false; <br>
+&nbsp;&nbsp; }else if(hasLT &amp;&amp; hasF &amp;&amp; hasR &amp;&amp; !hasA){ <br>
+if(c=='a' || c=='A')hasA=true; <br>
+else hasLT = hasF = hasR = false; <br>
+&nbsp;&nbsp; }else if(hasLT &amp;&amp; hasF &amp;&amp; hasR &amp;&amp; hasA&amp;&amp; !hasM){ <br>
+if(c=='m' || c=='M')hasM=true; <br>
+else hasLT = hasF = hasR = hasA = false; <br>
+&nbsp;&nbsp; }else if(hasLT &amp;&amp; hasF &amp;&amp; hasR &amp;&amp; hasA&amp;&amp; hasM &amp;&amp; !hasE){ <br>
+if(c=='e' || c=='E')hasE=true; <br>
+else hasLT = hasF = hasR = hasA = hasM = false; <br>
+&nbsp;&nbsp; }else if(hasLT &amp;&amp; hasF &amp;&amp; hasR &amp;&amp; hasA&amp;&amp; hasM &amp;&amp; hasE &amp;&amp; !hasSp){ <br>
+if(c==' ' || c=='\t' || c=='\n')hasSp=true; <br>
+else hasLT = hasF = hasR = hasA = hasM = hasE = false; <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp; //found &quot;&lt;frame &quot; <br>
+&nbsp;&nbsp; else if(hasLT &amp;&amp; hasF &amp;&amp; hasR &amp;&amp; hasA&amp;&amp; hasM &amp;&amp; hasE &amp;&amp; hasSp){ <br>
+hasLT = hasF = hasR = hasA = hasM = hasE = hasSp = false; <br>
+beg = loc; <br>
+loc = source.indexOf(&quot;&gt;&quot;, loc); <br>
+if(loc==-1){ <br>
+&nbsp;&nbsp;&nbsp;&nbsp; errors.insert(&quot;malformed frame at&quot;&#43;site.toString()); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; loc = beg; <br>
+} <br>
+else{ <br>
+&nbsp;&nbsp;&nbsp;&nbsp; try{ <br>
+&nbsp;&nbsp; parseFrame(site, source.substring(beg, loc)); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp;&nbsp;&nbsp; catch(Exception e){ <br>
+&nbsp;&nbsp; errors.insert(&quot;while parsing &quot;&#43;site.toString()&#43;&quot;,error parsing frame: &quot;&#43;e.toString());<br>
+&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+} <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; //found &quot;&lt;a &quot; <br>
+&nbsp;&nbsp; else if(hasLT &amp;&amp; hasA &amp;&amp; hasSp &amp;&amp; !hasF){ <br>
+hasLT = hasA = hasSp = false; <br>
+beg = loc; <br>
+loc = source.indexOf(&quot;&gt;&quot;, loc); <br>
+if(loc==-1){ <br>
+&nbsp;&nbsp;&nbsp;&nbsp; errors.insert(&quot;malformed linked at&quot;&#43;site.toString()); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; loc = beg; <br>
+} <br>
+else{ <br>
+&nbsp;&nbsp;&nbsp;&nbsp; try{ <br>
+&nbsp;&nbsp; parseLink(site, source.substring(beg, loc)); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp;&nbsp;&nbsp; catch(Exception e){ <br>
+&nbsp;&nbsp; errors.insert(&quot;while parsing &quot;&#43;site.toString()&#43;&quot;,error parsing link: &quot;&#43;e.toString());<br>
+&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+} <br>
+&nbsp;&nbsp; } <br>
+} <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp; /* <br>
+&nbsp;&nbsp; * parses a frame <br>
+&nbsp;&nbsp; */ <br>
+&nbsp;&nbsp; private void parseFrame(URL at_page, String s) throws Exception{ <br>
+int beg=s.indexOf(&quot;src&quot;); <br>
+if(beg==-1)beg=s.indexOf(&quot;SRC&quot;); <br>
+if(beg==-1)return;//doesn't have a src, ignore <br>
+beg = s.indexOf(&quot;=&quot;, beg); <br>
+if(beg==-1)throw new Exception(&quot;while parsing&quot;&#43;at_page.toString()&#43;&quot;, bad frame, missing \'=\' after src:&quot;&#43;s);<br>
+int start = beg; <br>
+for(;beg&lt;s.length();beg&#43;&#43;){ <br>
+&nbsp;&nbsp; if(s.charAt(beg)=='\'')break; <br>
+&nbsp;&nbsp; if(s.charAt(beg)=='\&quot;')break; <br>
+} <br>
+int end=beg&#43;1; <br>
+for(;end&lt;s.length();end&#43;&#43;){ <br>
+&nbsp;&nbsp; if(s.charAt(beg)==s.charAt(end))break; <br>
+} <br>
+beg&#43;&#43;; <br>
+if(beg&gt;=end){//missing quotes... just take the first token after&quot;src=&quot; <br>
+&nbsp;&nbsp; for(beg=start&#43;1;beg&lt;s.length() &amp;&amp; (s.charAt(beg)=='');beg&#43;&#43;){} <br>
+&nbsp;&nbsp; for(end=beg&#43;1;end&lt;s.length() &amp;&amp; (s.charAt(beg)!=' ')&amp;&amp; (s.charAt(beg)!='&gt;');end&#43;&#43;){}<br>
+} <br>
+&nbsp;&nbsp; <br>
+if(beg&gt;=end){ <br>
+&nbsp;&nbsp; errors.insert(&quot;while parsing &quot;&#43;at_page.toString()&#43;&quot;,bad frame: &quot;&#43;s); <br>
+&nbsp;&nbsp; return; <br>
+} <br>
+&nbsp;&nbsp; <br>
+String linkto=s.substring(beg,end); <br>
+if(linkto.startsWith(&quot;<a href="mailto:%22)%7C%7Clinkto.startsWith(%22Mailto:%22))return">mailto:&quot;)||linkto.startsWith(&quot;Mailto:&quot;))return</a>;<br>
+if(linkto.startsWith(&quot;javascript:&quot;)||linkto.startsWith(&quot;Javascript:&quot;))return;<br>
+if(linkto.startsWith(&quot;<a href="news:%22)%7C%7Clinkto.startsWith(%22%20:%22))return">news:&quot;)||linkto.startsWith(&quot;Javascript:&quot;))return</a>;<br>
+try{ <br>
+&nbsp;&nbsp; addSite(new URL(at_page, linkto)); <br>
+&nbsp;&nbsp; return; <br>
+}catch(Exception e1){} <br>
+try{ <br>
+&nbsp;&nbsp; addSite(new URL(linkto)); <br>
+&nbsp;&nbsp; return; <br>
+}catch(Exception e2){} <br>
+try{ <br>
+&nbsp;&nbsp; URL cp = new URL(at_page.toString()&#43;&quot;/index.html&quot;); <br>
+&nbsp;&nbsp; System.out.println(&quot;attemping to use &quot;&#43;cp); <br>
+&nbsp;&nbsp; addSite(new URL(cp, linkto)); <br>
+&nbsp;&nbsp; return; <br>
+}catch(Exception e3){} <br>
+errors.insert(&quot;while parsing &quot;&#43;at_page.toString()&#43;&quot;, bad frame:&quot;&#43;linkto&#43;&quot;, formed from: &quot;&#43;s);<br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; /* <br>
+&nbsp;&nbsp; * given a link at a URL, will parse it and add it to the list ofsites to do <br>
+&nbsp;&nbsp; */ <br>
+&nbsp;&nbsp; private void parseLink(URL at_page, String s) throws Exception{ <br>
+//System.out.println(&quot;parsing link &quot;&#43;s); <br>
+int beg=s.indexOf(&quot;href&quot;); <br>
+if(beg==-1)beg=s.indexOf(&quot;HREF&quot;); <br>
+if(beg==-1)return;//doesn't have a href, must be an anchor <br>
+beg = s.indexOf(&quot;=&quot;, beg); <br>
+if(beg==-1)throw new Exception(&quot;while parsing&quot;&#43;at_page.toString()&#43;&quot;, bad link, missing \'=\' after href:&quot;&#43;s);<br>
+int start = beg; <br>
+for(;beg&lt;s.length();beg&#43;&#43;){ <br>
+&nbsp;&nbsp; if(s.charAt(beg)=='\'')break; <br>
+&nbsp;&nbsp; if(s.charAt(beg)=='\&quot;')break; <br>
+} <br>
+int end=beg&#43;1; <br>
+for(;end&lt;s.length();end&#43;&#43;){ <br>
+&nbsp;&nbsp; if(s.charAt(beg)==s.charAt(end))break; <br>
+} <br>
+beg&#43;&#43;; <br>
+if(beg&gt;=end){//missing quotes... just take the first token after&quot;href=&quot; <br>
+&nbsp;&nbsp; for(beg=start&#43;1;beg&lt;s.length() &amp;&amp; (s.charAt(beg)=='');beg&#43;&#43;){} <br>
+&nbsp;&nbsp; for(end=beg&#43;1;end&lt;s.length() &amp;&amp; (s.charAt(beg)!=' ')&amp;&amp; (s.charAt(beg)!='&gt;');end&#43;&#43;){}<br>
+} <br>
+&nbsp;&nbsp; <br>
+if(beg&gt;=end){ <br>
+&nbsp;&nbsp; errors.insert(&quot;while parsing&quot;&#43;at_page.toString()&#43;&quot;, bad href: &quot;&#43;s); <br>
+&nbsp;&nbsp; return; <br>
+} <br>
+&nbsp;&nbsp; <br>
+String linkto=s.substring(beg,end); <br>
+if(linkto.startsWith(&quot;<a href="mailto:%22)%7C%7Clinkto.startsWith(%22Mailto:%22))return">mailto:&quot;)||linkto.startsWith(&quot;Mailto:&quot;))return</a>;<br>
+if(linkto.startsWith(&quot;javascript:&quot;)||linkto.startsWith(&quot;Javascript:&quot;))return;<br>
+if(linkto.startsWith(&quot;<a href="news:%22)%7C%7Clinkto.startsWith(%22%20:%22))return">news:&quot;)||linkto.startsWith(&quot;Javascript:&quot;))return</a>;<br>
+&nbsp;&nbsp; <br>
+try{ <br>
+&nbsp;&nbsp; addSite(new URL(at_page, linkto)); <br>
+&nbsp;&nbsp; return; <br>
+}catch(Exception e1){} <br>
+try{ <br>
+&nbsp;&nbsp; addSite(new URL(linkto)); <br>
+&nbsp;&nbsp; return; <br>
+}catch(Exception e2){} <br>
+try{ <br>
+&nbsp;&nbsp; addSite(new URL(newURL(at_page.toString()&#43;&quot;/index.html&quot;), linkto)); <br>
+&nbsp;&nbsp; return; <br>
+}catch(Exception e3){} <br>
+errors.insert(&quot;while parsing &quot;&#43;at_page.toString()&#43;&quot;, bad link:&quot;&#43;linkto&#43;&quot;, formed from: &quot;&#43;s);<br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; /* <br>
+&nbsp;&nbsp; * gets the title of a web page with content s <br>
+&nbsp;&nbsp; */ <br>
+&nbsp;&nbsp; private String getTitle(String s){ <br>
+try{ <br>
+&nbsp;&nbsp; int beg=s.indexOf(&quot;&lt;title&gt;&quot;); <br>
+&nbsp;&nbsp; if(beg==-1)beg=s.indexOf(&quot;&lt;TITLE&gt;&quot;); <br>
+&nbsp;&nbsp; int end=s.indexOf(&quot;&lt;/title&gt;&quot;); <br>
+&nbsp;&nbsp; if(end==-1)end=s.indexOf(&quot;&lt;/TITLE&gt;&quot;); <br>
+&nbsp;&nbsp; return s.substring(beg,end); <br>
+} <br>
+catch(Exception e){return &quot;&quot;;} <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; /* <br>
+&nbsp;&nbsp; * gets the text of a web page, times out after 10s <br>
+&nbsp;&nbsp; */ <br>
+&nbsp;&nbsp; private String getText(URL site) throws Exception <br>
+&nbsp;&nbsp; { <br>
+urlReader u = new urlReader(site); <br>
+Thread t = new Thread(u); <br>
+t.setDaemon(true); <br>
+t.start(); <br>
+t.join(TIMEOUT); <br>
+String ret = u.poll(); <br>
+if(ret==null){ <br>
+throw new Exception(&quot;connection timed out&quot;); <br>
+}else if(ret.equals(&quot;Not html&quot;)){ <br>
+throw new Exception(&quot;Not an HTML document&quot;); <br>
+} <br>
+return ret; <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; /* <br>
+&nbsp;&nbsp; * returns how many sites have been visited so far <br>
+&nbsp;&nbsp; */ <br>
+&nbsp;&nbsp; public int Visited(){return visitedsites;} <br>
+} <br>
+&nbsp;&nbsp; <br>
+class urlReader implements Runnable{ <br>
+&nbsp;&nbsp; URL site; <br>
+&nbsp;&nbsp; String s; <br>
+&nbsp;&nbsp; public urlReader(URL u){ <br>
+site = u; <br>
+s=null; <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; public void run(){ <br>
+try{ <br>
+&nbsp;&nbsp; String ret=new String(); <br>
+&nbsp;&nbsp; URLConnection u = site.openConnection(); <br>
+&nbsp;&nbsp; String type = u.getContentType(); <br>
+&nbsp;&nbsp; if(type.indexOf(&quot;text&quot;)==-1 &amp;&amp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; type.indexOf(&quot;txt&quot;)==-1&amp;&amp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; type.indexOf(&quot;HTM&quot;)==-1&amp;&amp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; type.indexOf(&quot;htm&quot;)==-1){ <br>
+//System.err.println(&quot;bad content type &quot;&#43;type&#43;&quot; at site&quot;&#43;site); <br>
+System.out.println(&quot;bad content type &quot;&#43;type&#43;&quot; at site&quot;&#43;site); <br>
+ret = &quot;Not html&quot;; <br>
+return; <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; InputStream in = u.getInputStream(); <br>
+&nbsp;&nbsp; BufferedInputStream bufIn = new BufferedInputStream(in); <br>
+&nbsp;&nbsp; int data; <br>
+&nbsp;&nbsp; while(true){ <br>
+data = bufIn.read(); <br>
+// Check for EOF <br>
+if (data == -1) break; <br>
+else ret&#43;= ( (char) data); <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; s = ret; <br>
+}catch(Exception e){s=null;} <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; public String poll(){return s;} <br>
+} <br>
+&nbsp;&nbsp; <br>
+public class spidergui extends Frame{ <br>
+&nbsp;&nbsp; <br>
+private spider s; <br>
+private Color txtColor; <br>
+private Color errColor; <br>
+private Color topColor; <br>
+private Color numColor; <br>
+private Color curColor; <br>
+&nbsp;&nbsp; <br>
+public spidergui(spider spi, String title){ <br>
+super(title); <br>
+curColor = new Color(40, 40, 200); <br>
+txtColor = new Color(0, 0, 0); <br>
+errColor = new Color(255, 0, 0); <br>
+topColor = new Color(40, 40, 100); <br>
+numColor = new Color(50, 150, 50); <br>
+s=spi; <br>
+setBounds(0, 0, 800, 600); <br>
+show(); <br>
+toFront(); <br>
+repaint(); <br>
+} <br>
+public void endShow(){ <br>
+System.out.println(s); <br>
+hide(); <br>
+dispose(); <br>
+} <br>
+public void paint(Graphics g){ <br>
+super.paint(g); <br>
+s.todo.reset(); <br>
+s.done.reset(); <br>
+s.errors.reset(); <br>
+s.omittions.reset(); <br>
+String txt; <br>
+Object o; <br>
+g.setColor(curColor); <br>
+g.setFont(new Font(&quot;arial&quot;, Font.PLAIN, 18)); <br>
+String cur = s.getCurrent(); <br>
+if(cur.length()&gt;80)g.drawString( <br>
+&nbsp;&nbsp; cur.substring(0, 40)&#43; <br>
+&nbsp;&nbsp; &quot; . . . &quot;&#43; <br>
+&nbsp;&nbsp; cur.substring(cur.length()-30, cur.length()), <br>
+50, 50); <br>
+else g.drawString(cur, 50, 50); <br>
+&nbsp;&nbsp; <br>
+g.setColor(numColor); <br>
+g.setFont(new Font(&quot;arial&quot;, Font.BOLD, 24)); <br>
+g.drawString(Integer.toString(s.Visited()), 350, 80); <br>
+&nbsp;&nbsp; <br>
+g.setFont(new Font(&quot;arial&quot;, Font.PLAIN, 14)); <br>
+g.setColor(topColor); <br>
+g.drawString(&quot;To Do:&quot;, 100, 80); <br>
+g.drawString(&quot;Completed:&quot;, 500, 80); <br>
+g.drawString(&quot;Ignored:&quot;, 500, 250); <br>
+g.drawString(&quot;Errors:&quot;, 100, 420); <br>
+&nbsp;&nbsp; <br>
+g.setColor(txtColor); <br>
+g.setFont(new Font(&quot;arial&quot;, Font.PLAIN, 12)); <br>
+for(int i=0;i&lt;23 &amp;&amp; (o=s.todo.get())!=null;i&#43;&#43;){ <br>
+txt = Integer.toString(i&#43;1) &#43; &quot;: &quot;&#43;o.toString(); <br>
+if(txt.length()&gt;65)g.drawString( <br>
+&nbsp;&nbsp; txt.substring(0, 38) &#43; <br>
+&nbsp;&nbsp; &quot; . . . &quot; &#43; <br>
+&nbsp;&nbsp; txt.substring(txt.length()-18, txt.length()), <br>
+20, 100&#43;13*i); <br>
+else g.drawString(txt, 20, 100&#43;13*i); <br>
+} <br>
+for(int i=0;i&lt;10 &amp;&amp; (o=s.done.get())!=null;i&#43;&#43;){ <br>
+txt = Integer.toString(i&#43;1) &#43; &quot;: &quot;&#43;o.toString(); <br>
+if(txt.length()&gt;60)g.drawString(txt.substring(0, 57)&#43;&quot;...&quot;, 400,100&#43;13*i); <br>
+else g.drawString(txt, 400, 100&#43;13*i); <br>
+} <br>
+for(int i=0;i&lt;10 &amp;&amp; (o=s.omittions.get())!=null;i&#43;&#43;){ <br>
+txt = Integer.toString(i&#43;1) &#43; &quot;: &quot;&#43;o.toString(); <br>
+if(txt.length()&gt;60)g.drawString(txt.substring(0, 57)&#43;&quot;...&quot;, 400,270&#43;13*i); <br>
+else g.drawString(txt, 400, 270&#43;13*i); <br>
+} <br>
+g.setColor(errColor); <br>
+for(int i=0;i&lt;10 &amp;&amp; (o=s.errors.get())!=null;i&#43;&#43;){ <br>
+txt = Integer.toString(i&#43;1) &#43; &quot;: &quot;&#43;o.toString(); <br>
+g.drawString(txt, 20, 440&#43;13*i); <br>
+} <br>
+&nbsp;&nbsp; <br>
+} <br>
+public void run(){ <br>
+repaint(); <br>
+while(s.hasMore()){ <br>
+repaint(); <br>
+s.doNextSite(); <br>
+} <br>
+repaint(); <br>
+} <br>
+&nbsp;&nbsp; <br>
+public static void main(String []args){ <br>
+int max = 5; <br>
+String site=&quot;&quot;; <br>
+String base=&quot;&quot;; <br>
+int time=0; <br>
+for(int i=0;i&lt;args.length;i&#43;&#43;){ <br>
+&nbsp;&nbsp; if(args[i].startsWith(&quot;-max=&quot;)){ <br>
+max=Integer.parseInt(args[i].substring(5,args[i].length())); <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; else if(args[i].startsWith(&quot;-time=&quot;)){ <br>
+time=Integer.parseInt(args[i].substring(6,args[i].length())); <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; else if(args[i].startsWith(&quot;-init=&quot;)){ <br>
+site=args[i].substring(6,args[i].length()); <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; else if(args[i].startsWith(&quot;-base=&quot;)){ <br>
+base=args[i].substring(6,args[i].length()); <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; elseif(args[i].startsWith(&quot;-help&quot;)||args[i].startsWith(&quot;-?&quot;)){ <br>
+System.out.println(&quot;additional command line switches:&quot;); <br>
+System.out.println(&quot;-max=N&nbsp;&nbsp;&nbsp;&nbsp; : to limit to N sites,default 5&quot;); <br>
+System.out.println(&quot;-init=URL&nbsp;&nbsp; : to set the initial site,REQUIRED&quot;); <br>
+System.out.println(&quot;-base=URL&nbsp;&nbsp; : only follow url's that startwith this&quot;); <br>
+System.out.println(&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default \&quot;\&quot; (matches all URLs)&quot;); <br>
+System.out.println(&quot;-time=N&nbsp;&nbsp; : how many millisec to wait foreach page&quot;); <br>
+System.out.println(&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default 5000 (5 seconds)&quot;); <br>
+System.exit(0); <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; else System.err.println(&quot;unrecognized switch:&quot;&#43;args[i]&#43;&quot;, continuing&quot;); <br>
+} <br>
+if(site==&quot;&quot;){ <br>
+&nbsp;&nbsp; System.err.println(&quot;No initial site parameter!&quot;); <br>
+&nbsp;&nbsp; System.err.println(&quot;Use -init=&lt;site&gt; switch to set, or-help for more info.&quot;); <br>
+&nbsp;&nbsp; System.exit(1); <br>
+} <br>
+&nbsp;&nbsp; <br>
+spider spi=new spider(site, max, base); <br>
+&nbsp;&nbsp; <br>
+if(time&gt;0)spi.setTimer(time); <br>
+&nbsp;&nbsp; <br>
+spidergui s = new spidergui(spi, &quot;Spider: &quot;&#43;site); <br>
+s.run(); <br>
+System.out.println(spi); <br>
+} <br>
+}</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>另一个实现：</p>
+<p>这是一个web搜索的基本程序，从命令行输入搜索条件（起始的URL、处理url的最大数、要搜索的字符串), <br>
+它就会逐个对Internet上的URL进行实时搜索,查找并输出匹配搜索条件的页面。 这个程序的原型来自《java编程艺术》， <br>
+为了更好的分析，站长去掉了其中的GUI部分，并稍作修改以适用jdk1.5。以这个程序为基础，可以写出在互联网上搜索 <br>
+诸如图像、邮件、网页下载之类的“爬虫”。 <br>
+先请看程序运行的过程：</p>
+<p><br>
+D:\java&gt;javac SearchCrawler.java（编译）</p>
+<p>D:\java&gt;java&nbsp;&nbsp; SearchCrawler <a href="http://127.0.0.1:8080/zz3zcwbwebhome/index.jsp">
+http://127.0.0.1:8080/zz3zcwbwebhome/index.jsp</a>20 java</p>
+<p>Start searching... <br>
+result: <br>
+searchString=java <br>
+<a href="http://127.0.0.1:8080/zz3zcwbwebhome/index.jsp">http://127.0.0.1:8080/zz3zcwbwebhome/index.jsp</a><br>
+<a href="http://127.0.0.1:8080/zz3zcwbwebhome/reply.jsp">http://127.0.0.1:8080/zz3zcwbwebhome/reply.jsp</a><br>
+<a href="http://127.0.0.1:8080/zz3zcwbwebhome/learn.jsp">http://127.0.0.1:8080/zz3zcwbwebhome/learn.jsp</a><br>
+<a href="http://127.0.0.1:8080/zz3zcwbwebhome/download.jsp">http://127.0.0.1:8080/zz3zcwbwebhome/download.jsp</a><br>
+<a href="http://127.0.0.1:8080/zz3zcwbwebhome/article.jsp">http://127.0.0.1:8080/zz3zcwbwebhome/article.jsp</a><br>
+<a href="http://127.0.0.1:8080/zz3zcwbwebhome/myexample/jlGUIOverview.htm">http://127.0.0.1:8080/zz3zcwbwebhome/myexample/jlGUIOverview.htm</a><br>
+<a href="http://127.0.0.1:8080/zz3zcwbwebhome/myexample/Proxooldoc/index.html">http://127.0.0.1:8080/zz3zcwbwebhome/myexample/Proxooldoc/index.html</a><br>
+<a href="http://127.0.0.1:8080/zz3zcwbwebhome/view.jsp?id=301">http://127.0.0.1:8080/zz3zcwbwebhome/view.jsp?id=301</a><br>
+<a href="http://127.0.0.1:8080/zz3zcwbwebhome/view.jsp?id=297">http://127.0.0.1:8080/zz3zcwbwebhome/view.jsp?id=297</a><br>
+<a href="http://127.0.0.1:8080/zz3zcwbwebhome/view.jsp?id=291">http://127.0.0.1:8080/zz3zcwbwebhome/view.jsp?id=291</a><br>
+<a href="http://127.0.0.1:8080/zz3zcwbwebhome/view.jsp?id=286">http://127.0.0.1:8080/zz3zcwbwebhome/view.jsp?id=286</a><br>
+<a href="http://127.0.0.1:8080/zz3zcwbwebhome/view.jsp?id=285">http://127.0.0.1:8080/zz3zcwbwebhome/view.jsp?id=285</a><br>
+<a href="http://127.0.0.1:8080/zz3zcwbwebhome/view.jsp?id=284">http://127.0.0.1:8080/zz3zcwbwebhome/view.jsp?id=284</a><br>
+<a href="http://127.0.0.1:8080/zz3zcwbwebhome/view.jsp?id=276">http://127.0.0.1:8080/zz3zcwbwebhome/view.jsp?id=276</a><br>
+<a href="http://127.0.0.1:8080/zz3zcwbwebhome/view.jsp?id=272">http://127.0.0.1:8080/zz3zcwbwebhome/view.jsp?id=272</a>&nbsp;&nbsp;</p>
+<p>又如： <br>
+D:\java&gt;java&nbsp;&nbsp;&nbsp; SearchCrawler <a href="http://www.sina.com/">http://www.sina.com</a>20 java<br>
+Start searching... <br>
+result: <br>
+searchString=java <br>
+<a href="http://sina.com/">http://sina.com</a> <br>
+<a href="http://redirect.sina.com/WWW/sinaCN/www.sina.com.cn">http://redirect.sina.com/WWW/sinaCN/www.sina.com.cn</a>class=a2<br>
+<a href="http://redirect.sina.com/WWW/sinaCN/www.sina.com.cn">http://redirect.sina.com/WWW/sinaCN/www.sina.com.cn</a>class=a8<br>
+<a href="http://redirect.sina.com/WWW/sinaHK/www.sina.com.hk">http://redirect.sina.com/WWW/sinaHK/www.sina.com.hk</a>class=a2<br>
+<a href="http://redirect.sina.com/WWW/sinaTW/www.sina.com.tw">http://redirect.sina.com/WWW/sinaTW/www.sina.com.tw</a>class=a8<br>
+<a href="http://redirect.sina.com/WWW/sinaUS/home.sina.com">http://redirect.sina.com/WWW/sinaUS/home.sina.com</a>class=a8<br>
+<a href="http://redirect.sina.com/WWW/smsCN/sms.sina.com.cn/">http://redirect.sina.com/WWW/smsCN/sms.sina.com.cn/</a>class=a2<br>
+<a href="http://redirect.sina.com/WWW/smsCN/sms.sina.com.cn/">http://redirect.sina.com/WWW/smsCN/sms.sina.com.cn/</a>class=a3<br>
+<a href="http://redirect.sina.com/WWW/sinaNet/www.sina.net/">http://redirect.sina.com/WWW/sinaNet/www.sina.net/</a>class=a3</p>
+<p><br>
+D:\java&gt; <br>
+下面是这个程序的源码 <br>
+Java代码 <br>
+import java.util.*; <br>
+import java.net.*; <br>
+import java.io.*; <br>
+import java.util.regex.*; <br>
+<br>
+// 搜索Web爬行者 <br>
+public class SearchCrawler implements Runnable{ <br>
+&nbsp;&nbsp; <br>
+/* disallowListCache缓存robot不允许搜索的URL。 Robot协议在Web站点的根目录下设置一个robots.txt文件, <br>
+*规定站点上的哪些页面是限制搜索的。 搜索程序应该在搜索过程中跳过这些区域,下面是robots.txt的一个例子: <br>
+# robots.txt for <a href="http://somehost.com/">http://somehost.com/</a> <br>
+&nbsp;&nbsp; User-agent: * <br>
+&nbsp;&nbsp; Disallow: /cgi-bin/ <br>
+&nbsp;&nbsp; Disallow: /registration # /Disallow robots on registration page <br>
+&nbsp;&nbsp; Disallow: /login <br>
+*/ <br>
+<br>
+<br>
+private HashMap&lt; String,ArrayList&lt; String&gt;&gt; disallowListCache = newHashMap&lt; String,ArrayList&lt; String&gt;&gt;();&nbsp;&nbsp;<br>
+ArrayList&lt; String&gt; errorList= new ArrayList&lt; String&gt;();//错误信息&nbsp;&nbsp; <br>
+ArrayList&lt; String&gt; result=new ArrayList&lt; String&gt;(); //搜索到的结果&nbsp;&nbsp; <br>
+String startUrl;//开始搜索的起点 <br>
+int maxUrl;//最大处理的url数 <br>
+String searchString;//要搜索的字符串(英文) <br>
+boolean caseSensitive=false;//是否区分大小写 <br>
+boolean limitHost=false;//是否在限制的主机内搜索 <br>
+&nbsp;&nbsp;&nbsp; <br>
+public SearchCrawler(String startUrl,int maxUrl,String searchString){ <br>
+&nbsp;&nbsp; this.startUrl=startUrl; <br>
+&nbsp;&nbsp; this.maxUrl=maxUrl; <br>
+&nbsp;&nbsp; this.searchString=searchString; <br>
+} <br>
+<br>
+&nbsp;&nbsp; public ArrayList&lt; String&gt; getResult(){ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return result; <br>
+&nbsp;&nbsp; } <br>
+<br>
+public void run(){//启动搜索线程 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; crawl(startUrl,maxUrl,searchString,limitHost,caseSensitive); <br>
+} <br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+<br>
+&nbsp;&nbsp;&nbsp; //检测URL&#26684;式 <br>
+private URL verifyUrl(String url) { <br>
+&nbsp;&nbsp;&nbsp; // 只处理HTTP URLs. <br>
+&nbsp;&nbsp;&nbsp; if (!url.toLowerCase().startsWith(&quot;http://&quot;)) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return null; <br>
+<br>
+&nbsp;&nbsp;&nbsp; URL verifiedUrl = null; <br>
+&nbsp;&nbsp;&nbsp; try { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; verifiedUrl = new URL(url); <br>
+&nbsp;&nbsp;&nbsp; } catch (Exception e) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return null; <br>
+&nbsp;&nbsp;&nbsp; } <br>
+<br>
+&nbsp;&nbsp;&nbsp; return verifiedUrl; <br>
+} <br>
+<br>
+// 检测robot是否允许访问给出的URL. <br>
+private boolean isRobotAllowed(URL urlToCheck) {&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; String host = urlToCheck.getHost().toLowerCase();//获取给出RUL的主机&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; //System.out.println(&quot;主机=&quot;&#43;host);<br>
+<br>
+&nbsp;&nbsp;&nbsp; // 获取主机不允许搜索的URL缓存&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; ArrayList&lt; String&gt; disallowList=disallowListCache.get(host);&nbsp;&nbsp; <br>
+<br>
+&nbsp;&nbsp;&nbsp; // 如果还没有缓存,下载并缓存。&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; if (disallowList == null) {&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; disallowList = new ArrayList&lt;String&gt;();&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try {&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL robotsFileUrl =newURL(&quot;http://&quot; &#43; host &#43; &quot;/robots.txt&quot;);&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BufferedReader reader =newBufferedReader(new InputStreamReader(robotsFileUrl.openStream()));&nbsp;&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 读robot文件，创建不允许访问的路径列表。&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String line;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while ((line = reader.readLine()) !=null) {&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(line.indexOf(&quot;Disallow:&quot;) == 0) {//是否包含&quot;Disallow:&quot;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; StringdisallowPath =line.substring(&quot;Disallow:&quot;.length());//获取不允许访问路径&nbsp;&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 检查是否有注释。&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; intcommentIndex = disallowPath.indexOf(&quot;#&quot;);&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(commentIndex != - 1) {&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disallowPath =disallowPath.substring(0, commentIndex);//去掉注释&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; disallowPath= disallowPath.trim();&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disallowList.add(disallowPath);&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp; <br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 缓存此主机不允许访问的路径。&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; disallowListCache.put(host,disallowList);&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } catch (Exception e) {&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true; //web站点根目录下没有robots.txt文件,返回真 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp; <br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; String file = urlToCheck.getFile();&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; //System.out.println(&quot;文件getFile()=&quot;&#43;file);<br>
+&nbsp;&nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; disallowList.size(); i&#43;&#43;){&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String disallow =disallowList.get(i);&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (file.startsWith(disallow)){&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return false;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp; <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; return true;&nbsp;&nbsp; <br>
+&nbsp;&nbsp; }&nbsp;&nbsp; <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp; private String downloadPage(URL pageUrl) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Open connection to URL forreading. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BufferedReader reader = <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; newBufferedReader(new InputStreamReader(pageUrl.openStream())); <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Read page into buffer. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String line; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; StringBuffer pageBuffer = newStringBuffer(); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while ((line =reader.readLine()) != null) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pageBuffer.append(line); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return pageBuffer.toString(); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } catch (Exception e) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return null; <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; // 从URL中去掉&quot;www&quot;<br>
+&nbsp;&nbsp; private String removeWwwFromUrl(String url) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp; int index = url.indexOf(&quot;://www.&quot;); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; if (index != -1) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return url.substring(0, index &#43; 3) &#43; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url.substring(index &#43; 7); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; return (url); <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; // 解析页面并找出链接 <br>
+&nbsp;&nbsp; private ArrayList&lt; String&gt; retrieveLinks(URL pageUrl, StringpageContents, HashSet crawledList,<br>
+&nbsp;&nbsp;&nbsp;&nbsp; boolean limitHost) <br>
+&nbsp;&nbsp; { <br>
+&nbsp;&nbsp;&nbsp;&nbsp; // 用正则表达式编译链接的匹配模式。 <br>
+Pattern p=&nbsp;&nbsp;&nbsp;&nbsp;Pattern.compile(&quot;&lt;a\\s&#43;href\\s*=\\s*\&quot;?(.*?)[\&quot;|&gt;]&quot;,Pattern.CASE_INSENSITIVE);<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Matcher m = p.matcher(pageContents); <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; ArrayList&lt; String&gt; linkList = new ArrayList&lt;String&gt;(); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; while (m.find()) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String link = m.group(1).trim(); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (link.length() &lt; 1) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; continue; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 跳过链到本页面内链接。 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (link.charAt(0) == '#') { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; continue; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (link.indexOf(&quot;mailto:&quot;) !=-1) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; continue; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(link.toLowerCase().indexOf(&quot;javascript&quot;) != -1) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; continue; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (link.indexOf(&quot;://&quot;) == -1){ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (link.charAt(0) == '/') {//处理绝对地&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; link =&quot;http://&quot; &#43; pageUrl.getHost()&#43;&quot;:&quot;&#43;pageUrl.getPort()&#43; link; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String file =pageUrl.getFile(); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(file.indexOf('/') == -1) {//处理相对地址 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; link =&quot;http://&quot; &#43; pageUrl.getHost()&#43;&quot;:&quot;&#43;pageUrl.getPort() &#43;&quot;/&quot; &#43; link;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stringpath =file.substring(0, file.lastIndexOf('/') &#43; 1); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; link =&quot;http://&quot; &#43; pageUrl.getHost() &#43;&quot;:&quot;&#43;pageUrl.getPort()&#43; path&#43; link;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int index = link.indexOf('#'); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (index != -1) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; link = link.substring(0,index); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; link = removeWwwFromUrl(link); <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL verifiedLink = verifyUrl(link); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (verifiedLink == null) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; continue; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* 如果限定主机，排除那些不合条件的URL*/ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (limitHost &amp;&amp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!pageUrl.getHost().toLowerCase().equals( <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verifiedLink.getHost().toLowerCase())) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; continue; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 跳过那些已经处理的链接. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (crawledList.contains(link)) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; continue; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; linkList.add(link); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; return (linkList); <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+// 搜索下载Web页面的内容，判断在该页面内有没有指定的搜索字符串 <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; private boolean searchStringMatches(String pageContents, StringsearchString, boolean caseSensitive){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String searchContents =pageContents;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!caseSensitive) {//如果不区分大小写 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; searchContents =pageContents.toLowerCase(); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; Pattern p = Pattern.compile(&quot;[\\s]&#43;&quot;); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; String[] terms = p.split(searchString); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; terms.length; i&#43;&#43;) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (caseSensitive) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(searchContents.indexOf(terms[i]) == -1) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return false; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(searchContents.indexOf(terms[i].toLowerCase()) == -1) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return false; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; return true; <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp; //执行实际的搜索操作 <br>
+&nbsp;&nbsp; public ArrayList&lt; String&gt; crawl(String startUrl, intmaxUrls, String searchString,boolean limithost,boolean caseSensitive )<br>
+&nbsp;&nbsp; {&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(&quot;searchString=&quot;&#43;searchString); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; HashSet&lt; String&gt; crawledList = new HashSet&lt;String&gt;(); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; LinkedHashSet&lt; String&gt; toCrawlList = newLinkedHashSet&lt; String&gt;(); <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (maxUrls &lt; 1) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; errorList.add(&quot;InvalidMax URLs value.&quot;); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(&quot;Invalid Max URLs value.&quot;); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; if (searchString.length() &lt; 1) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; errorList.add(&quot;Missing SearchString.&quot;); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Missing searchString&quot;); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; if (errorList.size() &gt; 0) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;err!!!&quot;); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return errorList; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; // 从开始URL中移出www <br>
+&nbsp;&nbsp;&nbsp;&nbsp; startUrl = removeWwwFromUrl(startUrl); <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; toCrawlList.add(startUrl); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; while (toCrawlList.size() &gt; 0) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (maxUrls != -1) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (crawledList.size() ==maxUrls) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Get URL at bottom of the list. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String url =toCrawlList.iterator().next(); <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Remove URL from the to crawl list. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; toCrawlList.remove(url); <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Convert string url to URL object. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; URL verifiedUrl = verifyUrl(url); <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Skip URL if robots are not allowed toaccess it. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!isRobotAllowed(verifiedUrl)) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; continue; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 增加已处理的URL到crawledList <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; crawledList.add(url); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String pageContents =downloadPage(verifiedUrl); <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (pageContents != null &amp;&amp;pageContents.length() &gt; 0){ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 从页面中获取有效的链接 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ArrayList&lt; String&gt; links=retrieveLinks(verifiedUrl, pageContents, crawledList,limitHost);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; toCrawlList.addAll(links); <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(searchStringMatches(pageContents, searchString,caseSensitive)) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result.add(url); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(url); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp;&nbsp; return result; <br>
+&nbsp;&nbsp; } <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp; // 主函数 <br>
+&nbsp;&nbsp; public static void main(String[] args) { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(args.length!=3){ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Usage:javaSearchCrawler startUrl maxUrl searchString&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } <br>
+&nbsp;&nbsp;&nbsp;&nbsp; int max=Integer.parseInt(args[1]); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; SearchCrawler crawler = newSearchCrawler(args[0],max,args[2]); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; Thread search=new Thread(crawler); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;Start searching...&quot;); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;result:&quot;); <br>
+&nbsp;&nbsp;&nbsp;&nbsp; search.start(); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp; } <br>
+}</p>
+<p>&nbsp;</p>
+    
+</div>
+
+
+
+
+<!-- Baidu Button BEGIN -->
+
+
+
+
+<div class="bdsharebuttonbox" style="float: right;">
+<a href="#" class="bds_more" data-cmd="more" style="background-position:0 0 !important; background-image: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important"></a>
+<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"  style="background-position:0 -52px !important"></a>
+<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"style="background-position:0 -104px !important"></a>
+<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"style="background-position:0 -260px !important"></a>
+<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"style="background-position:0 -208px !important"></a>
+<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"style="background-position:0 -1612px !important" ></a>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+<!-- Baidu Button END -->
+
+   <link rel="stylesheet" href="http://static.blog.csdn.net/css/blog_detail.css" />
+
+    
+<!--172.16.140.13-->
+<ul class="article_next_prev">
+            <li class="prev_article"><span  onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian']);location.href='/luojinping/article/details/6870895';">上一篇</span><a href="/luojinping/article/details/6870895" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_shangyipian'])">java的所谓一次编译，到处运行</a></li>
+            <li class="next_article"><span onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian']);location.href='/luojinping/article/details/6872973';">下一篇</span><a href="/luojinping/article/details/6872973" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_xiayipian'])">C/C++动态内存创建与内存管理</a></li>
+</ul>
+
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=1536434" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+
+ 
+
+      
+</div>
+<div id="suggest"></div>
+         <script  language="javascript" type='text/javascript'>     
+             $(function(){
+                 $.get("/luojinping/svc/GetSuggestContent/6870898",function(data){
+                     $("#suggest").html(data);
+                 });     
+             });             
+         </script>  
+
+
+<style>
+.blog-ass-articl dd {
+color: #369;
+width: 99%; /*修改行*/
+float: left;
+overflow: hidden;
+font: normal normal 12px/23px "SimSun";
+height: 23px;
+margin: 0;
+padding: 0 0 0 10px;
+margin-right: 30px;
+background: url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;
+}
+</style>
+
+<dl class="blog-ass-articl" id="res-relatived" > 
+     <dt><span>猜你在找</span></dt>    
+
+
+   
+
+
+    <div id="adCollege" style="width: 42%;float: left;"> 
+        <script src="http://csdnimg.cn/jobreco/job_reco.js" type="text/javascript"></script> 
+        <script type="text/javascript">
+            csdn.position.showEdu({
+                sourceType: "blog",
+                searchType: "detail",
+                searchKey: "6870898",
+                username: "",
+                recordcount: "5",
+                containerId: "adCollege" //容器DIV的id。 
+            });
+        </script> 
+    </div>  
+
+    
+     <div id="res"  data-mod="popu_36"  class="tracking-ad" style="width: 42%;float: left;margin-right: 30px;"></div>
+   
+</dl>
+
+<div id="job_blog_reco">
+<script src="http://c.csdnimg.cn/jobreco/job_reco.js" type="text/javascript"></script>
+   
+     <script type="text/javascript">
+         csdn.position.show({
+         sourceType: "blog",
+         tplType: "blogDetail",
+         searchType: "detail",
+         searchKey: "6870898",
+             username: "",
+         containerId: "job_blog_reco"
+        }); 
+    </script>
+
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        setTimeout(function () {
+            var searchtitletags = '网络爬虫讲解（附java实现的实例）' + ',' + $("#tags").html();
+            searchService({
+                index: 'blog',
+                query: searchtitletags,
+                from: 5,
+                size: 5,
+                appendTo: '#res',
+                url: 'recommend',
+                his: 2,
+                client: "blog_cf_enhance",
+                tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+            });
+        }, 500);
+    });    
+
+ </script>   
+
+    <div id="ad_cen">
+   
+          <script type="text/javascript">
+              new Ad(4, 'ad_cen');
+          </script>
+    </div>
+<div class="comment_class">
+    <div id="comment_title" class="panel_head">
+        <span class="see_comment">查看评论</span><a name="comments"></a></div>
+    <div id="comment_list">
+    </div>
+    <div id="comment_bar">
+    </div>
+    <div id="comment_form">
+    </div>
+
+    <div class="announce">
+        * 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<a name="reply"></a><a name="quote"></a></div>
+</div>
+
+<script type="text/javascript">
+    var fileName = '6870898';
+    var commentscount = 1;
+    var islock = false
+</script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/comment.js"></script>
+    <div id="ad_bot">
+    </div>
+    <script type="text/javascript">
+        setTimeout(function(){
+            new Ad(5, 'ad_bot');
+        },500);  
+    </script>
+<div id="report_dialog">
+</div>
+
+<div id="d-top"  style="bottom:60px;">
+        <a id="quick-reply" class="btn btn-top q-reply" title="快速回复" style="display:none;">
+            <img src="http://static.blog.csdn.net/images/blog-icon-reply.png" alt="快速回复">
+        </a>    
+
+    <a id="d-top-a" class="btn btn-top backtop"  style="display: none;" title="返回顶部" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_huidaodingbu'])" style="">         
+         <img src="http://static.blog.csdn.net/images/top.png" alt="TOP">
+    </a>
+</div>
+<script type="text/javascript">
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+        
+        setTimeout(function(){
+            $("#ad_frm_2").height("200px");
+        },1000);    
+    });
+  
+</script>
+<style type="text/css">
+    .tag_list
+    {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: 1px solid #D7CBC1;
+        color: #000000;
+        font-size: 12px;
+        line-height: 20px;
+        list-style: none outside none;
+        margin: 10px 2% 0 1%;
+        padding: 1px;
+    }
+    .tag_list h5
+    {
+        background: none repeat scroll 0 0 #E0DBD3;
+        color: #47381C;
+        font-size: 12px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 5px;
+        margin: 0;
+    }
+    .tag_list h5 a
+    {
+        color: #47381C;
+    }
+    .classify
+    {
+        margin: 10px 0;
+        padding: 4px 12px 8px;
+    }
+    .classify a
+    {
+        margin-right: 20px;
+        white-space: nowrap;
+    }
+</style>
+
+
+<div class="tag_list" style="display:none"></div>
+  <script  language="javascript" type='text/javascript'>     
+      $(function(){
+              setTimeout(function(){
+                  $.get("/luojinping/svc/GetTagContent",function(data){
+                      $(".tag_list").html(data).show();
+                  });     
+              });
+          },500);                       
+ </script> 
+
+
+<div id="pop_win" style="display:none ;position: absolute; z-index: 10000; border: 1px solid rgb(220, 220, 220); top: 222.5px; left: 630px; opacity: 1; background: none 0px 0px repeat scroll rgb(255, 255, 255);">
+    
+</div>
+<div id="popup_mask"></div>
+<style>
+    #popup_mask
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: 9999;
+        left: 0px;
+        top: 0px;
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+        display: none;
+    }
+
+</style>
+
+
+
+
+<script type="text/javascript">
+    $(function(){
+        setTimeout(function(){
+            $(".comment_body:contains('回复')").each(function(index,item){
+                var u=$(this).text().split('：')[0].toString().replace("回复","")
+                var thisComment=$(this);
+                if(u)
+                {
+                    $.getJSON("https://passport.csdn.net/get/nick?callback=?", {users: u}, function(a) {
+                        if(a!=null&&a.data!=null&&a.data.length>0)
+                        {
+                            nick=a.data[0].n; 
+                            if(u!=nick)
+                            {
+                                thisComment.text(thisComment.text().replace(u,nick));  
+                            }
+                        }       
+                    });  
+                }
+            });
+        },200);  
+        
+        setTimeout(function(){
+            $("a img[src='http://js.tongji.linezing.com/stats.gif']").parent().css({"position":"absolute","left":"50%"});
+        },300);
+    });
+
+    function loginbox(){
+        var $logpop=$("#pop_win");
+        $logpop.html('<iframe src="https://passport.csdn.net/account/loginbox?service=http://static.blog.csdn.net/callback.htm" frameborder="0" height="600" width="400" scrolling="no"></iframe>');
+
+        $('#popup_mask').css({
+            opacity: 0.5,
+            width: $( document ).width() + 'px',
+            height:  $( document ).height() + 'px'
+        });
+        $('#popup_mask').css("display","block");
+ 
+        $logpop.css( {
+            top: ($( window ).height() - $logpop.height())/ 2  + $( window 
+       ).scrollTop() + 'px',
+            left:($( window ).width() - $logpop.width())/ 2
+        } );
+ 
+        setTimeout( function () {
+            $logpop.show();
+            $logpop.css( {
+                opacity: 1
+            } );
+        }, 200 );
+ 
+        $('#popup_mask').unbind("click");
+        $('#popup_mask').bind("click", function(){
+            $('#popup_mask').hide();
+            var $clopop = $("#pop_win");
+            $("#common_ask_div_sc").css("display","none");
+            $clopop.css( {
+                opacity: 0
+            } );
+            setTimeout( function () {
+                $clopop.hide();
+            }, 350 );
+            return false;
+        });
+    }    
+
+</script>
+                        <div class="clear">
+                        </div>
+                    </div>                   
+                
+            </div>
+                   
+           <div id="side">
+    <div class="side">
+<div id="panel_Profile" class="panel">
+<ul class="panel_head"><span>个人资料</span></ul>
+<ul class="panel_body profile">
+<div id="blog_userface">
+    <a href="http://my.csdn.net/luojinping" target="_blank">
+    <img src="http://avatar.csdn.net/F/B/E/1_luojinping.jpg" title="访问我的空间" style="max-width:90%"/>
+    </a>
+    <br />
+    <span><a href="http://my.csdn.net/luojinping" class="user_name" target="_blank">luojinping</a></span>
+</div>
+<div class="interact">
+
+    <a href="javascript:void(0);" class="attent" id="span_add_follow" title="[加关注]"></a>
+
+ <a href="javascript:void(0);" class="letter"  title="[发私信]" onclick="window.open('http://msg.csdn.net/letters/model?receiver=luojinping','_blank','height=350,width=700');_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_sixin'])"></a>  
+</div>
+<div id="blog_medal">
+                <div id="bms_box">
+               </div>
+</div>
+<ul id="blog_rank">
+    <li>访问：<span>66974次</span></li>
+    <li>积分：<span>883</span> </li>    
+    <li >等级： <span style="position:relative;display:inline-block;z-index:1" >
+            <img src="http://c.csdnimg.cn/jifen/images/xunzhang/jianzhang/blog3.png" alt="" style="vertical-align: middle;" id="leveImg">
+            <div id="smallTittle" style=" position: absolute;  left: -24px;  top: 25px;  text-align: center;  width: 101px;  height: 32px;  background-color: #fff;  line-height: 32px;  border: 2px #DDDDDD solid;  box-shadow: 0px 2px 2px rgba (0,0,0,0.1);  display: none;   z-index: 999;">
+            <div style="left: 42%;  top: -8px;  position: absolute;  width: 0;  height: 0;  border-left: 10px solid transparent;  border-right: 10px solid transparent;  border-bottom: 8px solid #EAEAEA;"></div>
+            积分：883 </div>
+        </span>  </li>
+    <li>排名：<span>千里之外</span></li>
+</ul>
+<ul id="blog_statistics">
+    <li>原创：<span>14篇</span></li>
+    <li>转载：<span>24篇</span></li>
+    <li>译文：<span>0篇</span></li>
+    <li>评论：<span>21条</span></li>
+</ul>
+</ul>
+</div>
+
+
+<div class="panel" id="panel_Search">
+    <ul class="panel_head"><span>文章搜索</span></ul>
+    <ul class="panel_body">
+        <form id="frmSearch" action="http://so.csdn.net/search" class="form_search" target="_blank">
+        <span><input id="inputSearch" type="text" class="blogsearch" title="请输入关键字" /></span>
+        <input id="btnSubmit" type="button" value="搜索" title="search in blog" />
+        <input type="hidden" name="q" id="inputQ" />
+        <input type="hidden" name="t" value="blog" />
+        <a id="btnSearchBlog" target="_blank"></a>
+        </form>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";
+            window.location.href = url;
+        }   
+    });
+</script><div id="panel_Category" class="panel">
+<ul class="panel_head"><span>文章分类</span></ul>
+<ul class="panel_body">    
+                 <li>
+                    <a href="/luojinping/article/category/831036" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">C++</a><span>(9)</span>
+                </li>
+                 <li>
+                    <a href="/luojinping/article/category/853709" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">算法</a><span>(13)</span>
+                </li>
+                 <li>
+                    <a href="/luojinping/article/category/878426" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">细节</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/luojinping/article/category/945792" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Linux</a><span>(3)</span>
+                </li>
+                 <li>
+                    <a href="/luojinping/article/category/1150653" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">规划</a><span>(1)</span>
+                </li>
+                 <li>
+                    <a href="/luojinping/article/category/905451" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">Java</a><span>(2)</span>
+                </li>
+                 <li>
+                    <a href="/luojinping/article/category/905452" onclick="_gaq.push(['_trackEvent','function', 'onclick', 'blog_articles_wenzhangfenlei']); ">主题爬虫</a><span>(6)</span>
+                </li>
+</ul>
+</div><div id="panel_Archive" class="panel">
+<ul class="panel_head"><span>文章存档</span></ul>
+<ul class="panel_body">
+<div id="archive_list">
+<!--归档统计-->
+<li><a href="/luojinping/article/month/2013/04">2013年04月</a><span>(3)</span></li><li><a href="/luojinping/article/month/2013/03">2013年03月</a><span>(1)</span></li><li><a href="/luojinping/article/month/2012/07">2012年07月</a><span>(1)</span></li><li><a href="/luojinping/article/month/2012/06">2012年06月</a><span>(1)</span></li><li><a href="/luojinping/article/month/2012/05">2012年05月</a><span>(6)</span></li><li><a href="/luojinping/article/month/2011/12">2011年12月</a><span>(6)</span></li><li><a href="/luojinping/article/month/2011/11">2011年11月</a><span>(2)</span></li><li><a href="/luojinping/article/month/2011/10">2011年10月</a><span>(11)</span></li><li><a href="/luojinping/article/month/2011/09">2011年09月</a><span>(1)</span></li><li><a href="/luojinping/article/month/2011/08">2011年08月</a><span>(1)</span></li><li><a href="/luojinping/article/month/2011/07">2011年07月</a><span>(1)</span></li><li><a href="/luojinping/article/month/2011/06">2011年06月</a><span>(2)</span></li><li><a href="/luojinping/article/month/2009/10">2009年10月</a><span>(2)</span></li>
+</div>
+</ul>
+</div>
+<div id="hotarticls" class="panel">
+<ul class="panel_head">
+    <span>       
+阅读排行    </span>
+</ul>
+
+<ul class="panel_body itemlist">
+<li>
+<a href="/luojinping/article/details/6870898" title="网络爬虫讲解（附java实现的实例）">网络爬虫讲解（附java实现的实例）</a><span>(17584)</span>
+</li>
+<li>
+<a href="/luojinping/article/details/7533126" title="硬盘安装CentOS6.2详解">硬盘安装CentOS6.2详解</a><span>(6865)</span>
+</li>
+<li>
+<a href="/luojinping/article/details/6900788" title="0-1背包问题的递归实现与非递归实现">0-1背包问题的递归实现与非递归实现</a><span>(3614)</span>
+</li>
+<li>
+<a href="/luojinping/article/details/4674605" title="VS2008 安装失败（“Web 创作组件”无法）">VS2008 安装失败（“Web 创作组件”无法）</a><span>(3285)</span>
+</li>
+<li>
+<a href="/luojinping/article/details/8788743" title="使用继续完善前人写的文章：使用ICTCLAS JAVA版（ictclas4j）进行中文分词">使用继续完善前人写的文章：使用ICTCLAS JAVA版（ictclas4j）进行中文分词</a><span>(2901)</span>
+</li>
+<li>
+<a href="/luojinping/article/details/6736238" title="vss服务器突然连接不上了，提示说does not contain a valid sourcesafe database（srcsafe.ini）">vss服务器突然连接不上了，提示说does not contain a valid sourcesafe database（srcsafe.ini）</a><span>(2705)</span>
+</li>
+<li>
+<a href="/luojinping/article/details/7045013" title="最小生成树的prim算法贪心正确性的证明">最小生成树的prim算法贪心正确性的证明</a><span>(2413)</span>
+</li>
+<li>
+<a href="/luojinping/article/details/7066130" title="POJ1753——Flip Game">POJ1753——Flip Game</a><span>(2359)</span>
+</li>
+<li>
+<a href="/luojinping/article/details/6870895" title="java的所谓一次编译，到处运行">java的所谓一次编译，到处运行</a><span>(2214)</span>
+</li>
+<li>
+<a href="/luojinping/article/details/7044692" title="最小生成树的kruskal算法">最小生成树的kruskal算法</a><span>(2018)</span>
+</li>
+</ul>
+</div>
+<div id="hotarticls2" class="panel">
+<ul class="panel_head"><span>评论排行</span></ul>
+<ul class="panel_body itemlist">
+<li>
+<a href="/luojinping/article/details/4674605" title="VS2008 安装失败（“Web 创作组件”无法）">VS2008 安装失败（“Web 创作组件”无法）</a><span>(6)</span>
+</li>
+<li>
+<a href="/luojinping/article/details/6900788" title="0-1背包问题的递归实现与非递归实现">0-1背包问题的递归实现与非递归实现</a><span>(4)</span>
+</li>
+<li>
+<a href="/luojinping/article/details/8788743" title="使用继续完善前人写的文章：使用ICTCLAS JAVA版（ictclas4j）进行中文分词">使用继续完善前人写的文章：使用ICTCLAS JAVA版（ictclas4j）进行中文分词</a><span>(3)</span>
+</li>
+<li>
+<a href="/luojinping/article/details/7066130" title="POJ1753——Flip Game">POJ1753——Flip Game</a><span>(2)</span>
+</li>
+<li>
+<a href="/luojinping/article/details/7533126" title="硬盘安装CentOS6.2详解">硬盘安装CentOS6.2详解</a><span>(2)</span>
+</li>
+<li>
+<a href="/luojinping/article/details/6900768" title="递归与非递归的比较">递归与非递归的比较</a><span>(1)</span>
+</li>
+<li>
+<a href="/luojinping/article/details/7045013" title="最小生成树的prim算法贪心正确性的证明">最小生成树的prim算法贪心正确性的证明</a><span>(1)</span>
+</li>
+<li>
+<a href="/luojinping/article/details/7555293" title="POJ-1150（求排列数P(n,m)中最后一个非0的数字）">POJ-1150（求排列数P(n,m)中最后一个非0的数字）</a><span>(1)</span>
+</li>
+<li>
+<a href="/luojinping/article/details/6870898" title="网络爬虫讲解（附java实现的实例）">网络爬虫讲解（附java实现的实例）</a><span>(1)</span>
+</li>
+<li>
+<a href="/luojinping/article/details/7574496" title="某公司面试题——怎样优化乘法？">某公司面试题——怎样优化乘法？</a><span>(0)</span>
+</li>
+</ul>
+</div>
+<div id="homepageArticles" class="panel tracking-ad" data-mod="popu_4">
+<ul class="panel_head"><span>推荐文章</span></ul>
+<ul class="panel_body" id="ad_commend"></ul>
+</div>
+<script type="text/javascript">
+ new Ad(12, 'ad_commend');
+</script><div id="newcomments" class="panel">
+<ul class="panel_head"><span>最新评论</span></ul>
+<ul class="panel_body itemlist">
+    <li>
+   
+         <a href="/luojinping/article/details/8788743#comments">使用继续完善前人写的文章：使用ICTCLAS JAVA版（ictclas4j）进行中文分词</a>
+    <p style="margin:0px;"><a href="/wanninglu" class="user_name">wanninglu</a>:
+@hwwn2009:你好，请问你下载到正确的分词包了吗。我也是遇到分成一个字一个字的问题，请问能够发...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/luojinping/article/details/8788743#comments">使用继续完善前人写的文章：使用ICTCLAS JAVA版（ictclas4j）进行中文分词</a>
+    <p style="margin:0px;"><a href="/hwwn2009" class="user_name">hwwn2009</a>:
+我的问题同上~您好，你这个ictclas4j压缩包还有吗？能麻烦发一份给我吗？我的邮箱：wwwh20...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/luojinping/article/details/7045013#comments">最小生成树的prim算法贪心正确性的证明</a>
+    <p style="margin:0px;"><a href="/T_W_S" class="user_name">T_W_S</a>:
+吊
+    </p>
+    </li>
+    <li>
+   
+         <a href="/luojinping/article/details/6900788#comments">0-1背包问题的递归实现与非递归实现</a>
+    <p style="margin:0px;"><a href="/wangzhen199009" class="user_name">wangzhen199009</a>:
+//voluumn剩余容量、n表示第n个是不是装入 int MaxValue(int volumn,...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/luojinping/article/details/6900788#comments">0-1背包问题的递归实现与非递归实现</a>
+    <p style="margin:0px;"><a href="/eis_chf" class="user_name">eis_chf</a>:
+图表似乎画错了。全为4的那一行。
+    </p>
+    </li>
+    <li>
+   
+         <a href="/luojinping/article/details/6900788#comments">0-1背包问题的递归实现与非递归实现</a>
+    <p style="margin:0px;"><a href="/douyxiang" class="user_name">douyxiang</a>:
+@rsq079074120:if(j &gt;= WEIGHT)  不成立它就返回0？应该继续r = Ma...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/luojinping/article/details/6900788#comments">使用继续完善前人写的文章：使用ICTCLAS JAVA版（ictclas4j）进行中文分词</a>
+    <p style="margin:0px;"><a href="/psnxtansini" class="user_name">psnxtansini</a>:
+你好，我尝试了您文中所说的方法做了个判断，但是出现的结果是，句子被拆成了单个的词，而不是词语了，见下...
+    </p>
+    </li>
+    <li>
+   
+         <a href="/luojinping/article/details/7066130#comments">POJ1753——Flip Game</a>
+    <p style="margin:0px;"><a href="/yours1103" class="user_name">yours1103</a>:
+真好&#183;&#183;&#183;让我瞬间懂了！赞一个
+    </p>
+    </li>
+    <li>
+   
+         <a href="/luojinping/article/details/7066130#comments">0-1背包问题的递归实现与非递归实现</a>
+    <p style="margin:0px;"><a href="/rsq079074120" class="user_name">rsq079074120</a>:
+递归算法写错了，博主仔细看看。
+    </p>
+    </li>
+    <li>
+   
+         <a href="/luojinping/article/details/6870898#comments">网络爬虫讲解（附java实现的实例）</a>
+    <p style="margin:0px;"><a href="/firefox_hit" class="user_name">firefox_hit</a>:
+对于一些脚本语言（如VBScript和javascript）生成的网页，您有深入的研究么？请问您是使...
+    </p>
+    </li>
+</ul>
+</div>
+    </div>
+    <div class="clear">
+    </div>
+ </div>   
+            <div class="clear">
+            </div>
+        </div>
+        
+
+<script type="text/javascript" src="http://c.csdnimg.cn/rabbit/cnick/cnick.js"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/newblog.min.js"></script>
+
+
+<script type="text/javascript" src="http://medal.blog.csdn.net/showblogmedal.ashx?blogid=470603"></script>
+<script type="text/javascript" src="http://static.blog.csdn.net/scripts/JavaScript1.js"></script>
+
+    <script type="text/javascript" src="http://passport.csdn.net/content/loginbox/login.js"></script>
+<script type="text/javascript">document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</script>
+<script type="text/javascript" src="http://www.csdn.net/ui/scripts/Csdn/counter.js"></script>
+<script type="text/javascript" src="http://ad.csdn.net/scripts/ad-blog.js"></script>
+<script type="text/javascript">
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a>"
+                    + "<a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+    });
+</script>
+
+
+
+
+    </div>
+      <!--new top-->
+    
+    <script id="csdn-toolbar-id" btnId="header_notice_num" wrapId="note1" count="5" subCount="5" type="text/javascript" src="http://static.csdn.net/public/common/toolbar/js/toolbar.js"></script>     <!--new top-->
+   
+    <link href="http://c.csdnimg.cn/comm_ask/css/ask_float_block.css" type="text/css" rel="stylesheet" />
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/wmd.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/showdown.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/libs/prettify.js'></script>
+    <script language='JavaScript' type='text/javascript' src='http://c.csdnimg.cn/comm_ask/js/apps/ask_float_block.js'></script>
+   
+</body>
+</html>   
+ 

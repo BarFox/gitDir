@@ -1,0 +1,98 @@
+<h2>Installing PHP 5.5.13</h2>
+<p>Login to aludra.usc.edu. It will go WAY faster if you do. Make a directory in /tmp like you have done before. cd into that directory. Enter the 'tar' command below. 'gtar' will also work.
+<pre>
+tar xvf /home/scf-22/csci350/php-5.5.13.tar
+</pre>
+</p>
+
+<p>cd into the php-5.5.13 directory
+<pre>
+cd php-5.5.13
+</pre>
+</p>
+
+<p>Enter the configure command below, replacing the typical arguments with your values.
+<pre>
+./configure --with-apxs2=/home/scf-XX/YOURUNIXID/apache2/bin/apxs --with-mysql=/home/scf-XX/YOURUNIX/mysql --without-pear --prefix=/home/scf-XX/YOURUNIXID/php
+</pre>
+</p>
+
+<p>Then type the two commands below, one at a time. 'make' will take quite awhile to run. It was almost 30 minutes for me. 'make install' is much shorter.
+<pre>
+make
+make install
+</pre>
+</p>
+
+<p>On the 'make install' command, I saw the error below. If you get it, ignore it. It doesn't seem to matter.
+<pre>
+ln -s -f /home/scf-22/csci350/php/bin/phar.phar /home/scf-22/csci350/php/bin/phar
+Usage: ln [-f] [-s] f1
+       ln [-f] [-s] f1 f2
+       ln [-f] [-s] f1 ... fn d1
+*** Error code 1
+make: Fatal error: Command failed for target `install-pharcmd'
+</pre>
+</p>
+
+<p>Now enter the libtool command below. You should still be in your /tmp/YOURUNIXID/php-5.5.13 directory.
+<pre>
+libtool --finish /tmp/YOURUNIXID/php-5.5.13/libs
+</pre>
+</p>
+
+<p>Next, login to the cs-server computer. This is necessary as the libraries available to cs-server differ from aludra. You MUST copy the libraries when logged into aludra. They do not all seem to work if you copy them from cs-server. cd to your /home/scf-XX/YOURUNIXID/apache2/modules directory. enter the ldd command below.
+<pre>
+ldd libphp5.so
+</pre>
+</p>
+
+<p>This will list the libraries that the libphp5.so file cannot find. It was libresolv.so.2, libc.so.1, libnsl.so.1 for me.</p>
+
+<p>Another way to find out about library load issues is to enter the command from cs-server, in your apache2 directory.
+<pre>
+./bin/apachectl configtest
+</pre>
+</p>
+
+<p>This will ist the libraries that Apache cannot find. If you see 'Syntax OK', you are good to go. If you have one, or more libraries shown, you must copy those libraries to a directory in your Unix account. Since they are needed by Apache, let's create a directory called 'libexec' under apache2. The path will be/home/scf-XX/YOURUNIXID/apache2/libexec.</p>
+ 
+<p>You should have the same three library problems that I had. Make sure you are in your new libexec directory AND logged into aludra.usc.edu.
+<pre>
+cp /lib/libresolv.so.2 .
+cp /lib/libc.so.1 .
+cp /lib/libnsl.so.1 .
+</pre>
+
+Don't forget the last period. That says copy the file into your current directory - the libexec directory.
+</p>
+
+<p>You need to add your libexec directory to your LD_LIBRARY_PATH environment vairable in your .cshrc file.
+<pre>
+setenv LD_LIBRARY_PATH /home/scf-XX/YOURUNIXID/apache2/libexec 
+</pre>
+
+If you already have a LD_LIBRARY_PATH environment variable in your .cshrc file, add your libexec directory to the front of the existing list of direcctories.
+</p>
+
+<p>Go back to your httpd.conf file. Find the line:
+<pre>
+LoadModule php5_module modules/libphp5.so
+</pre>
+</p>
+
+<p>It was on line 148 for me. Add the three lines below just after the PHP LoadModule line.
+<pre>
+&lt;FilesMatch \.php$&gt;
+	SetHandler application/x-httpd-php
+&lt;/FilesMatch&gt;
+</pre>
+</p>
+
+<p>Finally, make sure you are back on cs-server. Stop Apache and then start it up again. I have found that restarting Apache doesn't always seem to work. Also, make sure you wait several seconds for the 'stop' to complete before typing in the 'start' command. If you enter the 'start' command before Apache has acctually stopped, it doesn't stop. You should now be able to run PHP scripts. Just put a simple PHP script, with a .php extension, in your htdocs folder under apache2. If you did something wrong, you will see the text of your PHP script, instead of having it executed. If Apache cannot start up because of a library load error, you need to copy that missing library into your libexec directory - make sure you do it when logged into aludra.</p>
+ 
+
+ 
+	
+
+ 
